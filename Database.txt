@@ -1,0 +1,48 @@
+﻿CREATE TABLE [dbo].[Major]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [Name] NVARCHAR(50) NOT NULL
+)
+CREATE TABLE [dbo].[Course] (
+    [Id]         INT           NOT NULL,
+    [Department] NVARCHAR (50) NOT NULL,
+    [Number]     NVARCHAR (50) NOT NULL,
+    [Name]       NVARCHAR (50) NOT NULL,
+    [Credits]    INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+)
+CREATE TABLE [dbo].[Instructor] (
+    [Id]     INT           NOT NULL,
+    [Name]   NVARCHAR (50) NOT NULL,
+    [Phone]  NVARCHAR (50) NOT NULL,
+    [Office] NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+)
+CREATE TABLE [dbo].[Student] (
+    [Id]             INT           NOT NULL,
+    [Name]           NVARCHAR (50) NOT NULL,
+    [UMID]           NVARCHAR (50) NOT NULL,
+    [Credits_Earned] INT           NOT NULL,
+    [Major_Id]       INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC), 
+    CONSTRAINT [FK_Student_ToMajor] FOREIGN KEY ([Major_Id]) REFERENCES [Major]([Id])
+)
+CREATE TABLE [dbo].[Section] (
+    [Id]            INT           NOT NULL,
+    [Course_Id]     INT           NOT NULL,
+	[Instructor_Id] INT           NOT NULL,
+    [Days]          NVARCHAR (50) NOT NULL,
+    [Time]          NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Section_ToCourse] FOREIGN KEY ([Course_Id]) REFERENCES [dbo].[Course] ([Id]),
+    CONSTRAINT [FK_Section_ToInstructor] FOREIGN KEY ([Instructor_Id]) REFERENCES [dbo].[Instructor] ([Id])
+)
+CREATE TABLE [dbo].[Enrollment] (
+    [Id]         INT        NOT NULL,
+    [Student_Id] INT        NOT NULL,
+    [Section_Id] INT        NOT NULL,
+    [Grade]      FLOAT (53) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Enrollment_ToSection] FOREIGN KEY ([Section_Id]) REFERENCES [dbo].[Section] ([Id]),
+    CONSTRAINT [FK_Enrollment_ToStudent] FOREIGN KEY ([Student_Id]) REFERENCES [dbo].[Student] ([Id])
+)
