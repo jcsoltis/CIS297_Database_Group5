@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\DCHVi\source\repos\WindowsFormsApp1\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Jason\Desktop\CLASSES\Sophmore 2\CIS-297\Git\CIS297_Database_Group5\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
