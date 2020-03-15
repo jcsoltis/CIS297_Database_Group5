@@ -12,14 +12,151 @@ namespace WindowsFormsApp1
 {
     public partial class CourseForm : Form
     {
+        CollegeEntities collegeEntities;
+        Course selectedCourse;
         public CourseForm()
         {
+            collegeEntities = new CollegeEntities();
+            selectedCourse = new Course();
             InitializeComponent();
+            UpdateBoxes();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void UpdateBoxes()
         {
+            selectedCourse = courseListBox.SelectedItem as Course;
+            if (selectedCourse != null)
+            {
+                idBox.Text = selectedCourse.Id.ToString();
+                departmentBox.Text = selectedCourse.Department;
+                nameBox.Text = selectedCourse.Name;
+                numberBox.Text = selectedCourse.Number;
+                creditsBox.Text = selectedCourse.Credits.ToString();
+            }
+            courseListBox.Items.Clear();
+            foreach (var course in collegeEntities.Courses)
+            {
+                courseListBox.Items.Add(course);
+            }
+        }
 
+        private int EmptyBox()
+        {
+            int emptyBox = 0;
+            if (idBox.Text == "")
+            {
+                emptyBox = 1;
+            }
+            else if (departmentBox.Text == "")
+            {
+                emptyBox = 2;
+            }
+            else if (numberBox.Text == "")
+            {
+                emptyBox = 3;
+            }
+            else if (nameBox.Text == "")
+            {
+                emptyBox = 4;
+            }
+            else if (creditsBox.Text == "")
+            {
+                emptyBox = 5;
+            }
+            return emptyBox;
+        }
+
+        private void courseBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateBoxes();
+        }
+
+        private void addCourse_Click(object sender, EventArgs e)
+        {
+            if (EmptyBox() == 0)
+            {
+                bool idEmpty = true;
+                foreach (var course in collegeEntities.Courses)
+                {
+                    if (course.Id == Convert.ToInt32(idBox.Text))
+                    {
+                        idEmpty = false;
+                    }
+                }
+                if (idEmpty)
+                {
+                    Course addCourse = new Course
+                    {
+                        Id = Convert.ToInt32(idBox.Text),
+                        Department = departmentBox.Text,
+                        Name = nameBox.Text,
+                        Number = numberBox.Text,
+                        Credits = Convert.ToInt32(creditsBox.Text)
+                    };
+                    collegeEntities.Courses.Add(addCourse);
+                    collegeEntities.SaveChanges();
+                    UpdateBoxes();
+                }
+                else
+                {
+                    idBox.Text = "Error! ID already exists";
+                }
+            }
+            else
+            {
+                switch (EmptyBox())
+                {
+                    case 1: idBox.Text = "Error! ID empty"; break;
+                    case 2: departmentBox.Text = "Error! Department empty"; break;
+                    case 3: numberBox.Text = "Error! Number empty"; break;
+                    case 4: nameBox.Text = "Error! Name empty"; break;
+                    case 5: creditsBox.Text = "Error! Credits empty"; break;
+                }
+            }
+        }
+
+        private void updateCourse_Click(object sender, EventArgs e)
+        {
+            if (EmptyBox() == 0)
+            {
+                Course updateCourse = collegeEntities.Courses.Find(Convert.ToInt32(idBox.Text));
+                if (updateCourse != null)
+                {
+                    updateCourse.Department = departmentBox.Text;
+                    updateCourse.Name = nameBox.Text;
+                    updateCourse.Number = numberBox.Text;
+                    updateCourse.Credits = Convert.ToInt32(creditsBox.Text);
+                }
+                else
+                {
+                    idBox.Text = "ID does not exist to update";
+                }
+                
+                collegeEntities.SaveChanges();
+                UpdateBoxes();
+            }
+            else
+            {
+                switch (EmptyBox())
+                {
+                    case 1: idBox.Text = "Error! ID empty"; break;
+                    case 2: departmentBox.Text = "Error! Department empty"; break;
+                    case 3: numberBox.Text = "Error! Number empty"; break;
+                    case 4: nameBox.Text = "Error! Name empty"; break;
+                    case 5: creditsBox.Text = "Error! Credits empty"; break;
+                }
+            }
+        }
+
+        private void deleteCourse_Click(object sender, EventArgs e)
+        {
+            Course deleteCourse = selectedCourse;
+            if (deleteCourse != null)
+            {
+                collegeEntities.Courses.Remove(deleteCourse);
+            }
+            collegeEntities.SaveChanges();
+            UpdateBoxes();
         }
     }
 }
