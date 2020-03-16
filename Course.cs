@@ -28,10 +28,5 @@ namespace WindowsFormsApp1
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Section> Sections { get; set; }
-
-        public override string ToString()
-        {
-            return $"{Id}. {Department}-{Number}: {Name}, {Credits} Credits";
-        }
     }
 }
