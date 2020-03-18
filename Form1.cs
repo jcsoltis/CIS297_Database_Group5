@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,10 @@ namespace WindowsFormsApp1 {
         }
 
         private void button1_Click(object sender, EventArgs e) {
+           
+           
             int instructorId = Convert.ToInt32(textBox1.Text);
+           
             Instructor eric = new Instructor {
                 Id = instructorId,
                 Name = "Eric",
@@ -41,11 +45,19 @@ namespace WindowsFormsApp1 {
             label1.Text = eric.Id.ToString() + eric.Name + eric.Phone + eric.Office;
 
             collegeEntities.Instructors.Add(eric);
-            foreach(Instructor instructor in collegeEntities.Instructors)
+            try
+            {
+                collegeEntities.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            foreach (Instructor instructor in collegeEntities.Instructors)
             {
                 listBox1.Items.Add(instructor.Id);
             }
-            collegeEntities.SaveChanges();
+           
         }
 
         private void CourseForm_Click(object sender, EventArgs e)
