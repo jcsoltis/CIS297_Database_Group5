@@ -89,5 +89,42 @@ namespace WindowsFormsApp1 {
         {
             studentForm.Show();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        //idea of updating search based off of filter in text box came from in class example from charnesky
+        public void updateSearch(string text)
+        {
+            label2.Text = "";
+            foreach (var course in collegeEntities.Courses.Where(c => c.Sections.Count > 0))  //very useful clause for searching stuff with filters foreach (var course in collegeEntities.Courses.Where(c => c.Enrollment.Count < 30
+            {
+                if(text == "")//used to make sure no classes are showing up when no text is in the search bar 
+                {
+                    break;
+                }
+                if (text != "" &&
+                    !course.Number.StartsWith(text))
+                {
+                    continue;
+                    
+                }
+                
+
+
+                label2.Text = $"{course} {Environment.NewLine}";
+                foreach (var section in course.Sections)
+                {
+                    label2.Text += $"         {section.Instructor.Name} {section.Days} {section.Time}{Environment.NewLine}";
+                }
+            }
+        }
+
+        private void courseLookupTextBox_TextChanged(object sender, EventArgs e)
+        {
+            updateSearch(courseLookupTextBox.Text);
+        }
     }
 }

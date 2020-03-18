@@ -92,7 +92,7 @@ namespace WindowsFormsApp1
                 bool idEmpty = true;
                 foreach (var section in collegeEntities.Sections)
                 {
-                    if (section.Id == Convert.ToInt32(idBox.Text))
+                    if (section.Id == Convert.ToInt32(idBox.Text)) // error was thrown here when I tried to add a new section of a course
                     {
                         idEmpty = false;
                     }
