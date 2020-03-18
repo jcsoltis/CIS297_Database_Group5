@@ -62,7 +62,7 @@ namespace WindowsFormsApp1 {
 
         private void CourseForm_Click(object sender, EventArgs e)
         {
-            courseForm.Show();
+            courseForm.Show(); //these forms will only show once and then the program will crash for some reason
         }
 
         private void EnrollmentForm_Click(object sender, EventArgs e)

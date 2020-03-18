@@ -43,6 +43,7 @@
             this.courseTableAdapter = new WindowsFormsApp1.CollegeDataSetTableAdapters.CourseTableAdapter();
             this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collegeDataSet)).BeginInit();
             this.fillByToolStrip.SuspendLayout();
@@ -225,11 +226,21 @@
             this.fillByToolStripButton.Text = "FillBy";
             this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(686, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "label4";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.courseLookupComboBox);
             this.Controls.Add(this.courseLookupTextBox);
@@ -279,6 +290,7 @@
         private CollegeDataSetTableAdapters.CourseTableAdapter courseTableAdapter;
         private System.Windows.Forms.ToolStrip fillByToolStrip;
         private System.Windows.Forms.ToolStripButton fillByToolStripButton;
+        private System.Windows.Forms.Label label4;
     }
 }
 
