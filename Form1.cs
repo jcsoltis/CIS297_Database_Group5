@@ -99,7 +99,7 @@ namespace WindowsFormsApp1 {
         public void updateSearch(string text)
         {
             label2.Text = "";
-            foreach (var course in collegeEntities.Courses.Where(c => c.Sections.Count > 0))  //very useful clause for searching stuff with filters foreach (var course in collegeEntities.Courses.Where(c => c.Enrollment.Count < 30
+            foreach (var course in collegeEntities.Courses.Where(c => c.Sections.Count > 0).Where(c => c.Department == courseLookupComboBox.Text))  //very useful clause for searching stuff with filters foreach (var course in collegeEntities.Courses.Where(c => c.Enrollment.Count < 30
             {
                 if(text == "")//used to make sure no classes are showing up when no text is in the search bar 
                 {
@@ -125,6 +125,32 @@ namespace WindowsFormsApp1 {
         private void courseLookupTextBox_TextChanged(object sender, EventArgs e)
         {
             updateSearch(courseLookupTextBox.Text);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            courseLookupTextBox.Text = "";
+            label2.Text = "";
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'collegeDataSet.Course' table. You can move, or remove it, as needed.
+            this.courseTableAdapter.Fill(this.collegeDataSet.Course);
+
+        }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.courseTableAdapter.FillBy(this.collegeDataSet.Course);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }

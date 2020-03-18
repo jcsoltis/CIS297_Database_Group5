@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -36,6 +37,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.courseLookupTextBox = new System.Windows.Forms.TextBox();
+            this.courseLookupComboBox = new System.Windows.Forms.ComboBox();
+            this.courseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.collegeDataSet = new WindowsFormsApp1.CollegeDataSet();
+            this.courseTableAdapter = new WindowsFormsApp1.CollegeDataSetTableAdapters.CourseTableAdapter();
+            this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
+            this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
+            ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.collegeDataSet)).BeginInit();
+            this.fillByToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -170,11 +180,58 @@
             this.courseLookupTextBox.TabIndex = 13;
             this.courseLookupTextBox.TextChanged += new System.EventHandler(this.courseLookupTextBox_TextChanged);
             // 
+            // courseLookupComboBox
+            // 
+            this.courseLookupComboBox.FormattingEnabled = true;
+            this.courseLookupComboBox.Items.AddRange(new object[] {
+            "CIS",
+            "ARTH"});
+            this.courseLookupComboBox.Location = new System.Drawing.Point(223, 442);
+            this.courseLookupComboBox.Name = "courseLookupComboBox";
+            this.courseLookupComboBox.Size = new System.Drawing.Size(121, 24);
+            this.courseLookupComboBox.TabIndex = 14;
+            this.courseLookupComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // courseBindingSource
+            // 
+            this.courseBindingSource.DataMember = "Course";
+            this.courseBindingSource.DataSource = this.collegeDataSet;
+            // 
+            // collegeDataSet
+            // 
+            this.collegeDataSet.DataSetName = "CollegeDataSet";
+            this.collegeDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // courseTableAdapter
+            // 
+            this.courseTableAdapter.ClearBeforeFill = true;
+            // 
+            // fillByToolStrip
+            // 
+            this.fillByToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fillByToolStripButton});
+            this.fillByToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.fillByToolStrip.Name = "fillByToolStrip";
+            this.fillByToolStrip.Size = new System.Drawing.Size(1067, 27);
+            this.fillByToolStrip.TabIndex = 15;
+            this.fillByToolStrip.Text = "fillByToolStrip";
+            // 
+            // fillByToolStripButton
+            // 
+            this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillByToolStripButton.Name = "fillByToolStripButton";
+            this.fillByToolStripButton.Size = new System.Drawing.Size(48, 24);
+            this.fillByToolStripButton.Text = "FillBy";
+            this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.fillByToolStrip);
+            this.Controls.Add(this.courseLookupComboBox);
             this.Controls.Add(this.courseLookupTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -191,6 +248,11 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.collegeDataSet)).EndInit();
+            this.fillByToolStrip.ResumeLayout(false);
+            this.fillByToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,6 +273,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox courseLookupTextBox;
+        private System.Windows.Forms.ComboBox courseLookupComboBox;
+        private CollegeDataSet collegeDataSet;
+        private System.Windows.Forms.BindingSource courseBindingSource;
+        private CollegeDataSetTableAdapters.CourseTableAdapter courseTableAdapter;
+        private System.Windows.Forms.ToolStrip fillByToolStrip;
+        private System.Windows.Forms.ToolStripButton fillByToolStripButton;
     }
 }
 
