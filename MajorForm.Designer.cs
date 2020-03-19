@@ -40,23 +40,26 @@
             // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(78, 197);
+            this.nameBox.Location = new System.Drawing.Point(104, 242);
+            this.nameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(146, 20);
+            this.nameBox.Size = new System.Drawing.Size(193, 22);
             this.nameBox.TabIndex = 48;
             // 
             // idBox
             // 
-            this.idBox.Location = new System.Drawing.Point(78, 175);
+            this.idBox.Location = new System.Drawing.Point(104, 215);
+            this.idBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.idBox.Name = "idBox";
-            this.idBox.Size = new System.Drawing.Size(146, 20);
+            this.idBox.Size = new System.Drawing.Size(193, 22);
             this.idBox.TabIndex = 47;
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(145, 225);
+            this.deleteButton.Location = new System.Drawing.Point(193, 277);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(59, 23);
+            this.deleteButton.Size = new System.Drawing.Size(79, 28);
             this.deleteButton.TabIndex = 46;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -64,9 +67,10 @@
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(80, 225);
+            this.updateButton.Location = new System.Drawing.Point(107, 277);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(59, 23);
+            this.updateButton.Size = new System.Drawing.Size(79, 28);
             this.updateButton.TabIndex = 45;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
@@ -74,9 +78,10 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(15, 225);
+            this.addButton.Location = new System.Drawing.Point(20, 277);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(59, 23);
+            this.addButton.Size = new System.Drawing.Size(79, 28);
             this.addButton.TabIndex = 44;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
@@ -85,35 +90,39 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 197);
+            this.label2.Location = new System.Drawing.Point(16, 242);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(45, 17);
             this.label2.TabIndex = 41;
             this.label2.Text = "Name";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 175);
+            this.label1.Location = new System.Drawing.Point(16, 215);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 13);
+            this.label1.Size = new System.Drawing.Size(19, 17);
             this.label1.TabIndex = 40;
             this.label1.Text = "Id";
             // 
             // majorListBox
             // 
             this.majorListBox.FormattingEnabled = true;
-            this.majorListBox.Location = new System.Drawing.Point(12, 12);
+            this.majorListBox.ItemHeight = 16;
+            this.majorListBox.Location = new System.Drawing.Point(16, 47);
+            this.majorListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.majorListBox.Name = "majorListBox";
-            this.majorListBox.Size = new System.Drawing.Size(212, 160);
+            this.majorListBox.Size = new System.Drawing.Size(281, 164);
             this.majorListBox.TabIndex = 39;
             this.majorListBox.SelectedIndexChanged += new System.EventHandler(this.majorBox_SelectedIndexChanged);
             // 
             // MajorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 256);
+            this.ClientSize = new System.Drawing.Size(311, 315);
             this.Controls.Add(this.nameBox);
             this.Controls.Add(this.idBox);
             this.Controls.Add(this.deleteButton);
@@ -122,6 +131,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.majorListBox);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MajorForm";
             this.Text = "MajorForm";
             this.ResumeLayout(false);

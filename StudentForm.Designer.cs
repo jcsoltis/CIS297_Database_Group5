@@ -46,53 +46,60 @@
             // 
             // majorIdBox
             // 
-            this.majorIdBox.Location = new System.Drawing.Point(78, 264);
+            this.majorIdBox.Location = new System.Drawing.Point(104, 325);
+            this.majorIdBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.majorIdBox.Name = "majorIdBox";
-            this.majorIdBox.Size = new System.Drawing.Size(146, 20);
+            this.majorIdBox.Size = new System.Drawing.Size(193, 22);
             this.majorIdBox.TabIndex = 54;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 264);
+            this.label5.Location = new System.Drawing.Point(16, 325);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 13);
+            this.label5.Size = new System.Drawing.Size(58, 17);
             this.label5.TabIndex = 53;
             this.label5.Text = "Major Id";
             // 
             // creditsBox
             // 
-            this.creditsBox.Location = new System.Drawing.Point(78, 241);
+            this.creditsBox.Location = new System.Drawing.Point(104, 297);
+            this.creditsBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.creditsBox.Name = "creditsBox";
-            this.creditsBox.Size = new System.Drawing.Size(146, 20);
+            this.creditsBox.Size = new System.Drawing.Size(193, 22);
             this.creditsBox.TabIndex = 52;
             // 
             // umidBox
             // 
-            this.umidBox.Location = new System.Drawing.Point(78, 218);
+            this.umidBox.Location = new System.Drawing.Point(104, 268);
+            this.umidBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.umidBox.Name = "umidBox";
-            this.umidBox.Size = new System.Drawing.Size(146, 20);
+            this.umidBox.Size = new System.Drawing.Size(193, 22);
             this.umidBox.TabIndex = 51;
             // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(78, 197);
+            this.nameBox.Location = new System.Drawing.Point(104, 242);
+            this.nameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(146, 20);
+            this.nameBox.Size = new System.Drawing.Size(193, 22);
             this.nameBox.TabIndex = 50;
             // 
             // idBox
             // 
-            this.idBox.Location = new System.Drawing.Point(78, 175);
+            this.idBox.Location = new System.Drawing.Point(104, 215);
+            this.idBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.idBox.Name = "idBox";
-            this.idBox.Size = new System.Drawing.Size(146, 20);
+            this.idBox.Size = new System.Drawing.Size(193, 22);
             this.idBox.TabIndex = 49;
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(145, 290);
+            this.deleteButton.Location = new System.Drawing.Point(193, 357);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(59, 23);
+            this.deleteButton.Size = new System.Drawing.Size(79, 28);
             this.deleteButton.TabIndex = 48;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -100,9 +107,10 @@
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(80, 290);
+            this.updateButton.Location = new System.Drawing.Point(107, 357);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(59, 23);
+            this.updateButton.Size = new System.Drawing.Size(79, 28);
             this.updateButton.TabIndex = 47;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
@@ -110,9 +118,10 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(15, 290);
+            this.addButton.Location = new System.Drawing.Point(20, 357);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(59, 23);
+            this.addButton.Size = new System.Drawing.Size(79, 28);
             this.addButton.TabIndex = 46;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
@@ -121,52 +130,58 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 241);
+            this.label4.Location = new System.Drawing.Point(16, 297);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.Size = new System.Drawing.Size(52, 17);
             this.label4.TabIndex = 45;
             this.label4.Text = "Credits";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 218);
+            this.label3.Location = new System.Drawing.Point(16, 268);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(42, 17);
             this.label3.TabIndex = 44;
             this.label3.Text = "UMID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 197);
+            this.label2.Location = new System.Drawing.Point(16, 242);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(45, 17);
             this.label2.TabIndex = 43;
             this.label2.Text = "Name";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 175);
+            this.label1.Location = new System.Drawing.Point(16, 215);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 13);
+            this.label1.Size = new System.Drawing.Size(19, 17);
             this.label1.TabIndex = 42;
             this.label1.Text = "Id";
             // 
             // studentListBox
             // 
             this.studentListBox.FormattingEnabled = true;
-            this.studentListBox.Location = new System.Drawing.Point(12, 12);
+            this.studentListBox.ItemHeight = 16;
+            this.studentListBox.Location = new System.Drawing.Point(16, 47);
+            this.studentListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.studentListBox.Name = "studentListBox";
-            this.studentListBox.Size = new System.Drawing.Size(212, 160);
+            this.studentListBox.Size = new System.Drawing.Size(281, 164);
             this.studentListBox.TabIndex = 41;
             // 
             // StudentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(230, 318);
+            this.ClientSize = new System.Drawing.Size(307, 391);
             this.Controls.Add(this.majorIdBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.creditsBox);
@@ -181,6 +196,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.studentListBox);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "StudentForm";
             this.Text = "StudentForm";
             this.ResumeLayout(false);
