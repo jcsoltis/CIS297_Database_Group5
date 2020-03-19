@@ -188,7 +188,34 @@ namespace WindowsFormsApp1
 
         private void enrollmentFormLookupBox_TextChanged(object sender, EventArgs e)
         {
-
+            //updateSearch(enrollmentFormLookupBox.Text);
         }
+      /*  public void updateSearch(string text)  //whole function needs to be worked on with group
+        {
+            enrollmentListBox.Items.Clear();
+            foreach (var enrollment in collegeEntities.Enrollments/*.Where(c => c.Sections.Count > 0))  //very useful clause for searching stuff with filters foreach (var course in collegeEntities.Courses.Where(c => c.Enrollment.Count < 30
+            {
+                if (text == "")//used to make sure no classes are showing up when no text is in the search bar 
+                {
+                    break;
+                }
+                if (text != "" &&
+                    !enrollment.Student.Name.StartsWith(text)) //start from here when you get back to filtering 
+                {
+                    continue;
+
+                }
+
+
+
+                enrollmentListBox.Items.Add(enrollment);
+                foreach (var field in student)                                                            
+                {
+                    enrollmentListBox.Items.Add($"{student.UMID}{student.Credits_Earned}{Environment.NewLine}");//figure out how to implement major in here
+                }
+            
+            
+            }
+        }*/
     }
 }

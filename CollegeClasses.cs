@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
         {
             return $"{Id}. {Student.Name} -> {Section.Course.Name}:{Grade}";
         }
+        
     }
 
     partial class Instructor

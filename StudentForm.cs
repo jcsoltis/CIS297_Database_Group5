@@ -191,7 +191,32 @@ namespace WindowsFormsApp1
 
         private void studentFormLookupBox_TextChanged(object sender, EventArgs e)
         {
+            updateSearch(studentFormLookupBox.Text);
+        }
+        public void updateSearch(string text)
+        {
+            studentListBox.Items.Clear();
+            foreach (var student in collegeEntities.Students/*.Where(c => c.Sections.Count > 0)*/)  //very useful clause for searching stuff with filters foreach (var course in collegeEntities.Courses.Where(c => c.Enrollment.Count < 30
+            {
+                if (text == "")//used to make sure no classes are showing up when no text is in the search bar 
+                {
+                    break;
+                }
+                if (text != "" &&
+                    !student.Major.Name.StartsWith(text)) //start from here when you get back to filtering 
+                {
+                    continue;
 
+                }
+
+
+
+                studentListBox.Items.Add(student);//need to figure out way to get text from items to pull into the text boxes at the bottom, talk to jason about this later
+                
+                
+                
+                
+            }
         }
     }
 }
