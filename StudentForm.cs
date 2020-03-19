@@ -188,5 +188,10 @@ namespace WindowsFormsApp1
             collegeEntities.SaveChanges();
             UpdateBoxes();
         }
+
+        private void studentFormLookupBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

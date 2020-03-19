@@ -42,12 +42,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.studentListBox = new System.Windows.Forms.ListBox();
+            this.studentFormLookupBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // majorIdBox
             // 
             this.majorIdBox.Location = new System.Drawing.Point(104, 325);
-            this.majorIdBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.majorIdBox.Margin = new System.Windows.Forms.Padding(4);
             this.majorIdBox.Name = "majorIdBox";
             this.majorIdBox.Size = new System.Drawing.Size(193, 22);
             this.majorIdBox.TabIndex = 54;
@@ -65,7 +66,7 @@
             // creditsBox
             // 
             this.creditsBox.Location = new System.Drawing.Point(104, 297);
-            this.creditsBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.creditsBox.Margin = new System.Windows.Forms.Padding(4);
             this.creditsBox.Name = "creditsBox";
             this.creditsBox.Size = new System.Drawing.Size(193, 22);
             this.creditsBox.TabIndex = 52;
@@ -73,7 +74,7 @@
             // umidBox
             // 
             this.umidBox.Location = new System.Drawing.Point(104, 268);
-            this.umidBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.umidBox.Margin = new System.Windows.Forms.Padding(4);
             this.umidBox.Name = "umidBox";
             this.umidBox.Size = new System.Drawing.Size(193, 22);
             this.umidBox.TabIndex = 51;
@@ -81,7 +82,7 @@
             // nameBox
             // 
             this.nameBox.Location = new System.Drawing.Point(104, 242);
-            this.nameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nameBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(193, 22);
             this.nameBox.TabIndex = 50;
@@ -89,7 +90,7 @@
             // idBox
             // 
             this.idBox.Location = new System.Drawing.Point(104, 215);
-            this.idBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.idBox.Margin = new System.Windows.Forms.Padding(4);
             this.idBox.Name = "idBox";
             this.idBox.Size = new System.Drawing.Size(193, 22);
             this.idBox.TabIndex = 49;
@@ -97,7 +98,7 @@
             // deleteButton
             // 
             this.deleteButton.Location = new System.Drawing.Point(193, 357);
-            this.deleteButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(4);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(79, 28);
             this.deleteButton.TabIndex = 48;
@@ -108,7 +109,7 @@
             // updateButton
             // 
             this.updateButton.Location = new System.Drawing.Point(107, 357);
-            this.updateButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(4);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(79, 28);
             this.updateButton.TabIndex = 47;
@@ -119,7 +120,7 @@
             // addButton
             // 
             this.addButton.Location = new System.Drawing.Point(20, 357);
-            this.addButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(79, 28);
             this.addButton.TabIndex = 46;
@@ -172,16 +173,25 @@
             this.studentListBox.FormattingEnabled = true;
             this.studentListBox.ItemHeight = 16;
             this.studentListBox.Location = new System.Drawing.Point(16, 47);
-            this.studentListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.studentListBox.Margin = new System.Windows.Forms.Padding(4);
             this.studentListBox.Name = "studentListBox";
             this.studentListBox.Size = new System.Drawing.Size(281, 164);
             this.studentListBox.TabIndex = 41;
+            // 
+            // studentFormLookupBox
+            // 
+            this.studentFormLookupBox.Location = new System.Drawing.Point(16, 12);
+            this.studentFormLookupBox.Name = "studentFormLookupBox";
+            this.studentFormLookupBox.Size = new System.Drawing.Size(100, 22);
+            this.studentFormLookupBox.TabIndex = 55;
+            this.studentFormLookupBox.TextChanged += new System.EventHandler(this.studentFormLookupBox_TextChanged);
             // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(307, 391);
+            this.Controls.Add(this.studentFormLookupBox);
             this.Controls.Add(this.majorIdBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.creditsBox);
@@ -196,7 +206,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.studentListBox);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StudentForm";
             this.Text = "StudentForm";
             this.ResumeLayout(false);
@@ -220,5 +230,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox studentListBox;
+        private System.Windows.Forms.TextBox studentFormLookupBox;
     }
 }

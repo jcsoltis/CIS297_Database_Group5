@@ -42,6 +42,7 @@
             this.sectionListBox = new System.Windows.Forms.ListBox();
             this.timeBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.sectionFormLookupBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // daysBox
@@ -178,11 +179,20 @@
             this.label5.TabIndex = 39;
             this.label5.Text = "Time";
             // 
+            // sectionFormLookupBox
+            // 
+            this.sectionFormLookupBox.Location = new System.Drawing.Point(16, 12);
+            this.sectionFormLookupBox.Name = "sectionFormLookupBox";
+            this.sectionFormLookupBox.Size = new System.Drawing.Size(100, 22);
+            this.sectionFormLookupBox.TabIndex = 41;
+            this.sectionFormLookupBox.TextChanged += new System.EventHandler(this.sectionFormLookupBox_TextChanged);
+            // 
             // SectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(312, 396);
+            this.Controls.Add(this.sectionFormLookupBox);
             this.Controls.Add(this.timeBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.daysBox);
@@ -221,5 +231,6 @@
         private System.Windows.Forms.ListBox sectionListBox;
         private System.Windows.Forms.TextBox timeBox;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox sectionFormLookupBox;
     }
 }

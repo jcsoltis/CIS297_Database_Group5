@@ -39,6 +39,31 @@ namespace WindowsFormsApp1
                 courseListBox.Items.Add(course);
             }
         }
+        public void updateSearch(string text)
+        {
+            courseListBox.Items.Clear();
+            foreach (var course in collegeEntities.Courses.Where(c => c.Sections.Count > 0))  //very useful clause for searching stuff with filters foreach (var course in collegeEntities.Courses.Where(c => c.Enrollment.Count < 30
+            {
+                if (text == "")//used to make sure no classes are showing up when no text is in the search bar 
+                {
+                    break;
+                }
+                if (text != "" &&
+                    !course.Department.StartsWith(text)) //start from here when you get back to filtering 
+                {
+                    continue;
+
+                }
+
+
+
+                courseListBox.Items.Add(course);
+                foreach (var section in course.Sections)
+                {
+                  courseListBox.Items.Add($"{section.Instructor.Name} {section.Days} {section.Time}{Environment.NewLine}");
+                }
+            }
+        }
 
         private int EmptyBox()
         {
@@ -157,6 +182,11 @@ namespace WindowsFormsApp1
             }
             collegeEntities.SaveChanges();
             UpdateBoxes();
+        }
+
+        private void courseFormLookupBox_TextChanged(object sender, EventArgs e)
+        {
+            updateSearch(courseFormLookupBox.Text);
         }
     }
 }

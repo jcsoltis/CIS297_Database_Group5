@@ -42,6 +42,7 @@
             this.numberBox = new System.Windows.Forms.TextBox();
             this.nameBox = new System.Windows.Forms.TextBox();
             this.creditsBox = new System.Windows.Forms.TextBox();
+            this.courseFormLookupBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // courseListBox
@@ -178,11 +179,20 @@
             this.creditsBox.Size = new System.Drawing.Size(193, 22);
             this.creditsBox.TabIndex = 13;
             // 
+            // courseFormLookupBox
+            // 
+            this.courseFormLookupBox.Location = new System.Drawing.Point(16, 12);
+            this.courseFormLookupBox.Name = "courseFormLookupBox";
+            this.courseFormLookupBox.Size = new System.Drawing.Size(100, 22);
+            this.courseFormLookupBox.TabIndex = 28;
+            this.courseFormLookupBox.TextChanged += new System.EventHandler(this.courseFormLookupBox_TextChanged);
+            // 
             // CourseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(332, 394);
+            this.Controls.Add(this.courseFormLookupBox);
             this.Controls.Add(this.creditsBox);
             this.Controls.Add(this.nameBox);
             this.Controls.Add(this.numberBox);
@@ -221,5 +231,6 @@
         private System.Windows.Forms.TextBox numberBox;
         private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.TextBox creditsBox;
+        private System.Windows.Forms.TextBox courseFormLookupBox;
     }
 }

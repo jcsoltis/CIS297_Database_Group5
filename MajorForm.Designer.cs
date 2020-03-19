@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.majorListBox = new System.Windows.Forms.ListBox();
+            this.majorFormLookupBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // nameBox
@@ -118,11 +119,20 @@
             this.majorListBox.TabIndex = 39;
             this.majorListBox.SelectedIndexChanged += new System.EventHandler(this.majorBox_SelectedIndexChanged);
             // 
+            // majorFormLookupBox
+            // 
+            this.majorFormLookupBox.Location = new System.Drawing.Point(16, 12);
+            this.majorFormLookupBox.Name = "majorFormLookupBox";
+            this.majorFormLookupBox.Size = new System.Drawing.Size(100, 22);
+            this.majorFormLookupBox.TabIndex = 49;
+            this.majorFormLookupBox.TextChanged += new System.EventHandler(this.majorFormLookupBox_TextChanged);
+            // 
             // MajorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(311, 315);
+            this.Controls.Add(this.majorFormLookupBox);
             this.Controls.Add(this.nameBox);
             this.Controls.Add(this.idBox);
             this.Controls.Add(this.deleteButton);
@@ -148,5 +158,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox majorListBox;
+        private System.Windows.Forms.TextBox majorFormLookupBox;
     }
 }

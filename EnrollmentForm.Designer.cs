@@ -40,6 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.enrollmentListBox = new System.Windows.Forms.ListBox();
+            this.enrollmentFormLookupBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // gradeBox
@@ -158,11 +159,20 @@
             this.enrollmentListBox.TabIndex = 14;
             this.enrollmentListBox.SelectedIndexChanged += new System.EventHandler(this.enrollmentBox_SelectedIndexChanged);
             // 
+            // enrollmentFormLookupBox
+            // 
+            this.enrollmentFormLookupBox.Location = new System.Drawing.Point(16, 12);
+            this.enrollmentFormLookupBox.Name = "enrollmentFormLookupBox";
+            this.enrollmentFormLookupBox.Size = new System.Drawing.Size(100, 22);
+            this.enrollmentFormLookupBox.TabIndex = 27;
+            this.enrollmentFormLookupBox.TextChanged += new System.EventHandler(this.enrollmentFormLookupBox_TextChanged);
+            // 
             // EnrollmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(312, 364);
+            this.Controls.Add(this.enrollmentFormLookupBox);
             this.Controls.Add(this.gradeBox);
             this.Controls.Add(this.sectionIdBox);
             this.Controls.Add(this.studentIdBox);
@@ -196,5 +206,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox enrollmentListBox;
+        private System.Windows.Forms.TextBox enrollmentFormLookupBox;
     }
 }

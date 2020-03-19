@@ -40,6 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.instructorListBox = new System.Windows.Forms.ListBox();
+            this.instructorFormLookupBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // officeBox
@@ -158,11 +159,20 @@
             this.instructorListBox.TabIndex = 27;
             this.instructorListBox.SelectedIndexChanged += new System.EventHandler(this.instructorBox_SelectedIndexChanged);
             // 
+            // instructorFormLookupBox
+            // 
+            this.instructorFormLookupBox.Location = new System.Drawing.Point(16, 12);
+            this.instructorFormLookupBox.Name = "instructorFormLookupBox";
+            this.instructorFormLookupBox.Size = new System.Drawing.Size(100, 22);
+            this.instructorFormLookupBox.TabIndex = 39;
+            this.instructorFormLookupBox.TextChanged += new System.EventHandler(this.instructorFormLookupBox_TextChanged);
+            // 
             // InstructorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(316, 364);
+            this.Controls.Add(this.instructorFormLookupBox);
             this.Controls.Add(this.officeBox);
             this.Controls.Add(this.phoneBox);
             this.Controls.Add(this.nameBox);
@@ -197,5 +207,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox instructorListBox;
+        private System.Windows.Forms.TextBox instructorFormLookupBox;
     }
 }
