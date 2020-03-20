@@ -30,7 +30,6 @@
         {
             this.daysBox = new System.Windows.Forms.TextBox();
             this.instructorIdBox = new System.Windows.Forms.TextBox();
-            this.courseIdBox = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
@@ -44,6 +43,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.sectionFormLookupFacultyBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.courseDropdown = new System.Windows.Forms.ComboBox();
+            this.semesterTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // daysBox
@@ -60,16 +62,9 @@
             this.instructorIdBox.Size = new System.Drawing.Size(219, 20);
             this.instructorIdBox.TabIndex = 37;
             // 
-            // courseIdBox
-            // 
-            this.courseIdBox.Location = new System.Drawing.Point(78, 197);
-            this.courseIdBox.Name = "courseIdBox";
-            this.courseIdBox.Size = new System.Drawing.Size(219, 20);
-            this.courseIdBox.TabIndex = 36;
-            // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(145, 290);
+            this.deleteButton.Location = new System.Drawing.Point(145, 313);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(59, 23);
             this.deleteButton.TabIndex = 34;
@@ -79,7 +74,7 @@
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(80, 290);
+            this.updateButton.Location = new System.Drawing.Point(80, 313);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(59, 23);
             this.updateButton.TabIndex = 33;
@@ -89,7 +84,7 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(15, 290);
+            this.addButton.Location = new System.Drawing.Point(15, 313);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(59, 23);
             this.addButton.TabIndex = 32;
@@ -120,9 +115,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 197);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 13);
+            this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 29;
-            this.label2.Text = "Course Id";
+            this.label2.Text = "Course";
             // 
             // sectionListBox
             // 
@@ -152,7 +147,7 @@
             // sectionFormLookupBox
             // 
             this.sectionFormLookupBox.Location = new System.Drawing.Point(101, 10);
-            this.sectionFormLookupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sectionFormLookupBox.Margin = new System.Windows.Forms.Padding(2);
             this.sectionFormLookupBox.Name = "sectionFormLookupBox";
             this.sectionFormLookupBox.Size = new System.Drawing.Size(76, 20);
             this.sectionFormLookupBox.TabIndex = 41;
@@ -184,11 +179,39 @@
             this.label7.TabIndex = 45;
             this.label7.Text = "Filter By Semester";
             // 
+            // courseDropdown
+            // 
+            this.courseDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.courseDropdown.FormattingEnabled = true;
+            this.courseDropdown.Location = new System.Drawing.Point(78, 193);
+            this.courseDropdown.Name = "courseDropdown";
+            this.courseDropdown.Size = new System.Drawing.Size(219, 21);
+            this.courseDropdown.TabIndex = 46;
+            // 
+            // semesterTextBox
+            // 
+            this.semesterTextBox.Location = new System.Drawing.Point(78, 289);
+            this.semesterTextBox.Name = "semesterTextBox";
+            this.semesterTextBox.Size = new System.Drawing.Size(219, 20);
+            this.semesterTextBox.TabIndex = 48;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 289);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 47;
+            this.label1.Text = "Semester";
+            // 
             // SectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 322);
+            this.ClientSize = new System.Drawing.Size(309, 341);
+            this.Controls.Add(this.semesterTextBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.courseDropdown);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.sectionFormLookupFacultyBox);
@@ -197,7 +220,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.daysBox);
             this.Controls.Add(this.instructorIdBox);
-            this.Controls.Add(this.courseIdBox);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.addButton);
@@ -216,7 +238,6 @@
 
         private System.Windows.Forms.TextBox daysBox;
         private System.Windows.Forms.TextBox instructorIdBox;
-        private System.Windows.Forms.TextBox courseIdBox;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button addButton;
@@ -230,5 +251,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox sectionFormLookupFacultyBox;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox courseDropdown;
+        private System.Windows.Forms.TextBox semesterTextBox;
+        private System.Windows.Forms.Label label1;
     }
 }

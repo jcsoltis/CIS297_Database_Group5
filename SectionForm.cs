@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
             collegeEntities = new CollegeEntities();
             selectedSection = new Section();
             InitializeComponent();
+            courseDropdown.DataSource = collegeEntities.Courses.ToList();
             UpdateBoxes();
         }
 
@@ -27,10 +28,11 @@ namespace WindowsFormsApp1
             selectedSection = sectionListBox.SelectedItem as Section;
             if (selectedSection != null)
             {
-                courseIdBox.Text = selectedSection.Course_Id.ToString();
+                courseDropdown.SelectedIndex = selectedSection.Course_Id-1;
                 instructorIdBox.Text = selectedSection.Instructor_Id.ToString();
                 daysBox.Text = selectedSection.Days;
                 timeBox.Text = selectedSection.Time;
+                semesterTextBox.Text = selectedSection.Semester;
             }
             sectionListBox.Items.Clear();
             foreach (var section in collegeEntities.Sections)
@@ -42,11 +44,7 @@ namespace WindowsFormsApp1
         private int EmptyBox()
         {
             int emptyBox = 0;
-            if (courseIdBox.Text == "")
-            {
-                emptyBox = 2;
-            }
-            else if (instructorIdBox.Text == "")
+            if (instructorIdBox.Text == "")
             {
                 emptyBox = 3;
             }
@@ -64,14 +62,14 @@ namespace WindowsFormsApp1
         private int ValidKey()
         {
             int validKey = 0;
-            if (collegeEntities.Courses.Find(Convert.ToInt32(courseIdBox.Text)) == null)
+            /*if (collegeEntities.Courses.Find(Convert.ToInt32(courseIdBox.Text)) == null)
             {
                 validKey = 1;
             }
             else if (collegeEntities.Instructors.Find(Convert.ToInt32(instructorIdBox.Text)) == null)
             {
                 validKey = 2;
-            }
+            }*/
             return validKey;
         }
 
@@ -85,7 +83,7 @@ namespace WindowsFormsApp1
             if (EmptyBox() == 0)
             {
                 Section addSection = new Section {
-                    Course_Id = Convert.ToInt32(courseIdBox.Text),
+                    Course_Id = (courseDropdown.SelectedItem as Course).Id,//courseIdBox.Text),
                     Instructor_Id = Convert.ToInt32(instructorIdBox.Text),
                     Days = daysBox.Text,
                     Time = timeBox.Text,
@@ -98,8 +96,6 @@ namespace WindowsFormsApp1
             {
                 switch (EmptyBox())
                 {
-                    //case 1: idBox.Text = "Error! ID empty"; break;
-                    case 2: courseIdBox.Text = "Error! Course ID empty"; break;
                     case 3: instructorIdBox.Text = "Error! Instructor ID empty"; break;
                     case 4: daysBox.Text = "Error! Days empty"; break;
                     case 5: timeBox.Text = "Error! Time empty"; break;
@@ -116,7 +112,7 @@ namespace WindowsFormsApp1
                 {
                     if (ValidKey() == 0)
                     {
-                        updateSection.Course_Id = Convert.ToInt32(courseIdBox.Text);
+                        updateSection.Course_Id =  (courseDropdown.SelectedItem as Course).Id;
                         updateSection.Instructor_Id = Convert.ToInt32(instructorIdBox.Text);
                         updateSection.Days = daysBox.Text;
                         updateSection.Time = timeBox.Text;
@@ -125,14 +121,10 @@ namespace WindowsFormsApp1
                     {
                         switch (ValidKey())
                         {
-                            case 1: courseIdBox.Text = "Error! Course ID nonexistent"; break;
+                            //case 1: courseIdBox.Text = "Error! Course ID nonexistent"; break;
                             case 2: instructorIdBox.Text = "Error! Instructor ID nonexistent"; break;
                         }
                     }
-                }
-                else
-                {
-                    //idBox.Text = "ID does not exist to update";
                 }
 
                 collegeEntities.SaveChanges();
@@ -143,7 +135,7 @@ namespace WindowsFormsApp1
                 switch (EmptyBox())
                 {
                     //case 1: idBox.Text = "Error! ID empty"; break;
-                    case 2: courseIdBox.Text = "Error! Course ID empty"; break;
+                    //case 2: courseIdBox.Text = "Error! Course ID empty"; break;
                     case 3: instructorIdBox.Text = "Error! Instructor ID empty"; break;
                     case 4: daysBox.Text = "Error! Days empty"; break;
                     case 5: timeBox.Text = "Error! Time empty"; break;
