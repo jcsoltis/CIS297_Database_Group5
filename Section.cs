@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Section()
         {
-            this.Enrollments = new HashSet<Course>();
+            this.Enrollments = new HashSet<Enrollment>();
         }
     
         public int Id { get; set; }
@@ -25,10 +25,11 @@ namespace WindowsFormsApp1
         public int Instructor_Id { get; set; }
         public string Days { get; set; }
         public string Time { get; set; }
+        public string Semester { get; set; }
     
         public virtual Course Course { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Course> Enrollments { get; set; }
+        public virtual ICollection<Enrollment> Enrollments { get; set; }
         public virtual Instructor Instructor { get; set; }
     }
 }

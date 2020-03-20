@@ -62,31 +62,37 @@ namespace WindowsFormsApp1 {
 
         private void CourseForm_Click(object sender, EventArgs e)
         {
+            courseForm = new CourseForm();
             courseForm.Show(); //these forms will only show once and then the program will crash for some reason
         }
 
         private void EnrollmentForm_Click(object sender, EventArgs e)
         {
+            enrollmentForm = new EnrollmentForm();
             enrollmentForm.Show();
         }
 
         private void InstructorForm_Click(object sender, EventArgs e)
         {
+            instructorForm = new InstructorForm();
             instructorForm.Show();
         }
 
         private void MajorForm_Click(object sender, EventArgs e)
         {
+            majorForm = new MajorForm();
             majorForm.Show();
         }
 
         private void SectionForm_Click(object sender, EventArgs e)
         {
+            sectionForm = new SectionForm();
             sectionForm.Show();
         }
 
         private void StudentForm_Click(object sender, EventArgs e)
         {
+            studentForm = new StudentForm();
             studentForm.Show();
         }
 
