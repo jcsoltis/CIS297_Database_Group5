@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
             selectedEnrollment = enrollmentListBox.SelectedItem as Enrollment;
             if (selectedEnrollment != null)
             {
-                idBox.Text = selectedEnrollment.Id.ToString();
+                //idBox.Text = selectedEnrollment.Id.ToString();
                 studentIdBox.Text = selectedEnrollment.Student_Id.ToString();
                 sectionIdBox.Text = selectedEnrollment.Section_Id.ToString();
                 gradeBox.Text = selectedEnrollment.Grade.ToString();
@@ -42,11 +42,7 @@ namespace WindowsFormsApp1
         private int EmptyBox()
         {
             int emptyBox = 0;
-            if (idBox.Text == "")
-            {
-                emptyBox = 1;
-            }
-            else if (studentIdBox.Text == "")
+            if (studentIdBox.Text == "")
             {
                 emptyBox = 2;
             }
@@ -84,48 +80,20 @@ namespace WindowsFormsApp1
         {
             if (EmptyBox() == 0)
             {
-                bool idEmpty = true;
-                foreach (var enrollment in collegeEntities.Enrollments)
-                {
-                    if (enrollment.Id == Convert.ToInt32(idBox.Text))
-                    {
-                        idEmpty = false;
-                    }
-                }
-                if (idEmpty)
-                {
-                    if (ValidKey() == 0)
-                    {
-                        Enrollment addEnrollment = new Enrollment
-                        {
-                            Id = Convert.ToInt32(idBox.Text),
-                            Student_Id = Convert.ToInt32(studentIdBox.Text),
-                            Section_Id = Convert.ToInt32(sectionIdBox.Text),
-                            Grade = Convert.ToDouble(gradeBox.Text),
-                        };
-                        collegeEntities.Enrollments.Add(addEnrollment);
-                        collegeEntities.SaveChanges();
-                        UpdateBoxes();
-                    }
-                    else
-                    {
-                        switch (ValidKey())
-                        {
-                            case 1: studentIdBox.Text = "Error! Student ID nonexistent"; break;
-                            case 2: sectionIdBox.Text = "Error! Section ID nonexistent"; break;
-                        }
-                    }
-                }
-                else
-                {
-                    idBox.Text = "Error! ID already exists";
-                }
+                Enrollment addEnrollment = new Enrollment {
+                    Student_Id = Convert.ToInt32(studentIdBox.Text),
+                    Section_Id = Convert.ToInt32(sectionIdBox.Text),
+                    Grade = Convert.ToDouble(gradeBox.Text),
+                };
+                collegeEntities.Enrollments.Add(addEnrollment);
+                collegeEntities.SaveChanges();
+                UpdateBoxes();
             }
             else
             {
                 switch (EmptyBox())
                 {
-                    case 1: idBox.Text = "Error! ID empty"; break;
+                    //case 1: idBox.Text = "Error! ID empty"; break;
                     case 2: studentIdBox.Text = "Error! Student ID empty"; break;
                     case 3: sectionIdBox.Text = "Error! Section ID empty"; break;
                     case 4: gradeBox.Text = "Error! Grade empty"; break;
@@ -137,37 +105,19 @@ namespace WindowsFormsApp1
         {
             if (EmptyBox() == 0)
             {
-                Enrollment updateEnrollment = collegeEntities.Enrollments.Find(Convert.ToInt32(idBox.Text));
-                if (updateEnrollment != null)
-                {
-                    if (ValidKey() == 0)
-                    {
-                        updateEnrollment.Student_Id = Convert.ToInt32(studentIdBox.Text);
-                        updateEnrollment.Section_Id = Convert.ToInt32(sectionIdBox.Text);
-                        updateEnrollment.Grade = Convert.ToDouble(gradeBox.Text);
-                    }
-                    else
-                    {
-                        switch (ValidKey())
-                        {
-                            case 1: studentIdBox.Text = "Error! Student ID nonexistent"; break;
-                            case 2: sectionIdBox.Text = "Error! Section ID nonexistent"; break;
-                        }
-                    }
+                Enrollment updateEnrollment = selectedEnrollment;//enrollmentListBox.SelectedItem as Enrollment;//collegeEntities.Enrollments.Find(Convert.ToInt32(idBox.Text));
+                if (updateEnrollment != null) {
+                    updateEnrollment.Student_Id = Convert.ToInt32(studentIdBox.Text);
+                    updateEnrollment.Section_Id = Convert.ToInt32(sectionIdBox.Text);
+                    updateEnrollment.Grade = Convert.ToDouble(gradeBox.Text);
+                    collegeEntities.SaveChanges();
+                    UpdateBoxes();
                 }
-                else
-                {
-                    idBox.Text = "ID does not exist to update";
-                }
-
-                collegeEntities.SaveChanges();
-                UpdateBoxes();
-            }
-            else
+            } else
             {
                 switch (EmptyBox())
                 {
-                    case 1: idBox.Text = "Error! ID empty"; break;
+                    //case 1: idBox.Text = "Error! ID empty"; break;
                     case 2: studentIdBox.Text = "Error! Student ID empty"; break;
                     case 3: sectionIdBox.Text = "Error! Section ID empty"; break;
                     case 4: gradeBox.Text = "Error! Grade empty"; break;

@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
             selectedMajor = majorListBox.SelectedItem as Major;
             if (selectedMajor != null)
             {
-                idBox.Text = selectedMajor.Id.ToString();
+                //idBox.Text = selectedMajor.Id.ToString();
                 nameBox.Text = selectedMajor.Name;
             }
             majorListBox.Items.Clear();
@@ -40,11 +40,7 @@ namespace WindowsFormsApp1
         private int EmptyBox()
         {
             int emptyBox = 0;
-            if (idBox.Text == "")
-            {
-                emptyBox = 1;
-            }
-            else if (nameBox.Text == "")
+            if (nameBox.Text == "")
             {
                 emptyBox = 2;
             }
@@ -60,35 +56,18 @@ namespace WindowsFormsApp1
         {
             if (EmptyBox() == 0)
             {
-                bool idEmpty = true;
-                foreach (var major in collegeEntities.Majors)
-                {
-                    if (major.Id == Convert.ToInt32(idBox.Text))
-                    {
-                        idEmpty = false;
-                    }
-                }
-                if (idEmpty)
-                {
-                    Major addMajor = new Major
-                    {
-                        Id = Convert.ToInt32(idBox.Text),
-                        Name = nameBox.Text,
-                    };
-                    collegeEntities.Majors.Add(addMajor);
-                    collegeEntities.SaveChanges();
-                    UpdateBoxes();
-                }
-                else
-                {
-                    idBox.Text = "Error! ID already exists";
-                }
+                Major addMajor = new Major {
+                    Name = nameBox.Text,
+                };
+                collegeEntities.Majors.Add(addMajor);
+                collegeEntities.SaveChanges();
+                UpdateBoxes();
             }
             else
             {
                 switch (EmptyBox())
                 {
-                    case 1: idBox.Text = "Error! ID empty"; break;
+                    //case 1: idBox.Text = "Error! ID empty"; break;
                     case 2: nameBox.Text = "Error! Name empty"; break;
                 }
             }
@@ -98,14 +77,14 @@ namespace WindowsFormsApp1
         {
             if (EmptyBox() == 0)
             {
-                Major updateMajor = collegeEntities.Majors.Find(Convert.ToInt32(idBox.Text));
+                Major updateMajor = selectedMajor;// majorListBox.SelectedItem as Major;//collegeEntities.Majors.Find(Convert.ToInt32(idBox.Text));
                 if (updateMajor != null)
                 {
                     updateMajor.Name = nameBox.Text;
                 }
                 else
                 {
-                    idBox.Text = "ID does not exist to update";
+                    //idBox.Text = "ID does not exist to update";
                 }
 
                 collegeEntities.SaveChanges();
@@ -115,7 +94,7 @@ namespace WindowsFormsApp1
             {
                 switch (EmptyBox())
                 {
-                    case 1: idBox.Text = "Error! ID empty"; break;
+                    //case 1: idBox.Text = "Error! ID empty"; break;
                     case 2: nameBox.Text = "Error! Name empty"; break;
                 }
             }

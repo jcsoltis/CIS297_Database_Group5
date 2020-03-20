@@ -27,7 +27,6 @@ namespace WindowsFormsApp1
             selectedInstructor = instructorListBox.SelectedItem as Instructor;
             if (selectedInstructor != null)
             {
-                idBox.Text = selectedInstructor.Id.ToString();
                 nameBox.Text = selectedInstructor.Name;
                 phoneBox.Text = selectedInstructor.Phone;
                 officeBox.Text = selectedInstructor.Office;
@@ -42,11 +41,7 @@ namespace WindowsFormsApp1
         private int EmptyBox()
         {
             int emptyBox = 0;
-            if (idBox.Text == "")
-            {
-                emptyBox = 1;
-            }
-            else if (nameBox.Text == "")
+            if (nameBox.Text == "")
             {
                 emptyBox = 2;
             }
@@ -70,37 +65,20 @@ namespace WindowsFormsApp1
         {
             if (EmptyBox() == 0)
             {
-                bool idEmpty = true;
-                foreach (var instructor in collegeEntities.Instructors)
-                {
-                    if (instructor.Id == Convert.ToInt32(idBox.Text))
-                    {
-                        idEmpty = false;
-                    }
-                }
-                if (idEmpty)
-                {
-                    Instructor addInstructor = new Instructor
-                    {
-                        Id = Convert.ToInt32(idBox.Text),
-                        Name = nameBox.Text,
-                        Phone = phoneBox.Text,
-                        Office = officeBox.Text,
-                    };
-                    collegeEntities.Instructors.Add(addInstructor);
-                    collegeEntities.SaveChanges();
-                    UpdateBoxes();
-                }
-                else
-                {
-                    idBox.Text = "Error! ID already exists";
-                }
+                Instructor addInstructor = new Instructor {
+                    Name = nameBox.Text,
+                    Phone = phoneBox.Text,
+                    Office = officeBox.Text,
+                };
+                collegeEntities.Instructors.Add(addInstructor);
+                collegeEntities.SaveChanges();
+                UpdateBoxes();
             }
             else
             {
                 switch (EmptyBox())
                 {
-                    case 1: idBox.Text = "Error! ID empty"; break;
+                    //case 1: idBox.Text = "Error! ID empty"; break;
                     case 2: nameBox.Text = "Error! Name empty"; break;
                     case 3: phoneBox.Text = "Error! Phone empty"; break;
                     case 4: officeBox.Text = "Error! Office empty"; break;
@@ -112,7 +90,7 @@ namespace WindowsFormsApp1
         {
             if (EmptyBox() == 0)
             {
-                Instructor updateInstructor = collegeEntities.Instructors.Find(Convert.ToInt32(idBox.Text));
+                Instructor updateInstructor = selectedInstructor;//instructorListBox.SelectedItem as Instructor;//collegeEntities.Instructors.Find(Convert.ToInt32(idBox.Text));
                 if (updateInstructor != null)
                 {
                     updateInstructor.Name = nameBox.Text;
@@ -121,7 +99,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    idBox.Text = "ID does not exist to update";
+                    //idBox.Text = "ID does not exist to update";
                 }
 
                 collegeEntities.SaveChanges();
@@ -131,7 +109,7 @@ namespace WindowsFormsApp1
             {
                 switch (EmptyBox())
                 {
-                    case 1: idBox.Text = "Error! ID empty"; break;
+                    //case 1: idBox.Text = "Error! ID empty"; break;
                     case 2: nameBox.Text = "Error! Name empty"; break;
                     case 3: phoneBox.Text = "Error! Phone empty"; break;
                     case 4: officeBox.Text = "Error! Office empty"; break;

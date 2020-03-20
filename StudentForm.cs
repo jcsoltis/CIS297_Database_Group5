@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
             selectedStudent = studentListBox.SelectedItem as Student;
             if (selectedStudent != null)
             {
-                idBox.Text = selectedStudent.Id.ToString();
+                //idBox.Text = selectedStudent.Id.ToString();
                 nameBox.Text = selectedStudent.Name;
                 umidBox.Text = selectedStudent.UMID;
                 creditsBox.Text = selectedStudent.Credits_Earned.ToString();
@@ -43,11 +43,7 @@ namespace WindowsFormsApp1
         private int EmptyBox()
         {
             int emptyBox = 0;
-            if (idBox.Text == "")
-            {
-                emptyBox = 1;
-            }
-            else if (nameBox.Text == "")
+            if (nameBox.Text == "")
             {
                 emptyBox = 2;
             }
@@ -85,48 +81,21 @@ namespace WindowsFormsApp1
         {
             if (EmptyBox() == 0)
             {
-                bool idEmpty = true;
-                foreach (var student in collegeEntities.Students)
-                {
-                    if (student.Id == Convert.ToInt32(idBox.Text))
-                    {
-                        idEmpty = false;
-                    }
-                }
-                if (idEmpty)
-                {
-                    if (ValidKey() == 0)
-                    {
-                        Student addStudent = new Student
-                        {
-                            Id = Convert.ToInt32(idBox.Text),
-                            Name = nameBox.Text,
-                            UMID = umidBox.Text,
-                            Credits_Earned = Convert.ToInt32(creditsBox.Text),
-                            Major_Id = Convert.ToInt32(majorIdBox.Text),
-                        };
-                        collegeEntities.Students.Add(addStudent);
-                        collegeEntities.SaveChanges();
-                        UpdateBoxes();
-                    }
-                    else
-                    {
-                        switch (ValidKey())
-                        {
-                            case 1: majorIdBox.Text = "Error! Major ID nonexistent"; break;
-                        }
-                    }
-                }
-                else
-                {
-                    idBox.Text = "Error! ID already exists";
-                }
+                Student addStudent = new Student {
+                    Name = nameBox.Text,
+                    UMID = umidBox.Text,
+                    Credits_Earned = Convert.ToInt32(creditsBox.Text),
+                    Major_Id = Convert.ToInt32(majorIdBox.Text),
+                };
+                collegeEntities.Students.Add(addStudent);
+                collegeEntities.SaveChanges();
+                UpdateBoxes();
             }
             else
             {
                 switch (EmptyBox())
                 {
-                    case 1: idBox.Text = "Error! ID empty"; break;
+                    //case 1: idBox.Text = "Error! ID empty"; break;
                     case 2: nameBox.Text = "Error! Name empty"; break;
                     case 3: umidBox.Text = "Error! UMID empty"; break;
                     case 4: creditsBox.Text = "Error! Credits empty"; break;
@@ -139,37 +108,19 @@ namespace WindowsFormsApp1
         {
             if (EmptyBox() == 0)
             {
-                Student updateStudent = collegeEntities.Students.Find(Convert.ToInt32(idBox.Text));
-                if (updateStudent != null)
-                {
-                    if (ValidKey() == 0)
-                    {
-                        updateStudent.Name = nameBox.Text;
-                        updateStudent.UMID = umidBox.Text;
-                        updateStudent.Credits_Earned = Convert.ToInt32(creditsBox.Text);
-                        updateStudent.Major_Id = Convert.ToInt32(majorIdBox.Text);
-                    }
-                    else
-                    {
-                        switch (ValidKey())
-                        {
-                            case 1: majorIdBox.Text = "Error! Major ID nonexistent"; break;
-                        }
-                    }
-                }
-                else
-                {
-                    idBox.Text = "ID does not exist to update";
-                }
+                Student updateStudent = selectedStudent;//studentListBox.SelectedItem as Student;//collegeEntities.Students.Find(Convert.ToInt32(idBox.Text));
+                if (updateStudent != null) {
+                    updateStudent.Name = nameBox.Text;
+                    updateStudent.UMID = umidBox.Text;
+                    updateStudent.Credits_Earned = Convert.ToInt32(creditsBox.Text);
+                    updateStudent.Major_Id = Convert.ToInt32(majorIdBox.Text);
 
-                collegeEntities.SaveChanges();
-                UpdateBoxes();
-            }
-            else
-            {
-                switch (EmptyBox())
-                {
-                    case 1: idBox.Text = "Error! ID empty"; break;
+                    collegeEntities.SaveChanges();
+                    UpdateBoxes();
+                }
+            } else {
+                switch (EmptyBox()) {
+                    //case 1: idBox.Text = "Error! ID empty"; break;
                     case 2: nameBox.Text = "Error! Name empty"; break;
                     case 3: umidBox.Text = "Error! UMID empty"; break;
                     case 4: creditsBox.Text = "Error! Credits empty"; break;

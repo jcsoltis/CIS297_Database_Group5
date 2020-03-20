@@ -32,7 +32,7 @@ namespace WindowsFormsApp1 {
         private void button1_Click(object sender, EventArgs e) {
            
            
-            int instructorId = Convert.ToInt32(textBox1.Text);
+            /*int instructorId = Convert.ToInt32(textBox1.Text);
            
             Instructor eric = new Instructor {
                 Id = instructorId,
@@ -56,7 +56,7 @@ namespace WindowsFormsApp1 {
             foreach (Instructor instructor in collegeEntities.Instructors)
             {
                 listBox1.Items.Add(instructor.Id);
-            }
+            }*/
            
         }
 
@@ -104,7 +104,7 @@ namespace WindowsFormsApp1 {
         //idea of updating search based off of filter in text box came from in class example from charnesky
         public void updateSearch(string text)
         {
-            label2.Text = "";
+            /*label2.Text = "";
             foreach (var course in collegeEntities.Courses.Where(c => c.Sections.Count > 0).Where(c => c.Department == courseLookupComboBox.Text))  //very useful clause for searching stuff with filters foreach (var course in collegeEntities.Courses.Where(c => c.Enrollment.Count < 30
             {
                 if(text == "")//used to make sure no classes are showing up when no text is in the search bar 
@@ -125,18 +125,18 @@ namespace WindowsFormsApp1 {
                 {
                     label2.Text += $"         {section.Instructor.Name} {section.Days} {section.Time}{Environment.NewLine}";
                 }
-            }
+            }*/
         }
 
         private void courseLookupTextBox_TextChanged(object sender, EventArgs e)
         {
-            updateSearch(courseLookupTextBox.Text);
+            //updateSearch(courseLookupTextBox.Text);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            courseLookupTextBox.Text = "";
-            label2.Text = "";
+            /*courseLookupTextBox.Text = "";
+            label2.Text = "";*/
         }
 
         private void Form1_Load(object sender, EventArgs e)
