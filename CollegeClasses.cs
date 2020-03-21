@@ -43,7 +43,7 @@ namespace WindowsFormsApp1
     {
         public override string ToString()
         {
-            return $"{Id}. {Days} {Time} c:{Course.Name} w/ {Instructor.Name}";
+            return $"{Id}. {Days} {Time} {Course.Name} w/ {Instructor.Name} in {Semester}";
         }
     }
 
@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
     {
         public override string ToString()
         {
-            return $"{Id}. {Name}:{UMID} c:{Credits_Earned} m:{Major.Name}";
+            return $"{Id}. {Name}:{UMID} Credits:{Credits_Earned} Major:{Major.Name}";
         }
     }
 }

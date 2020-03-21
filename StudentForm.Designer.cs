@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.majorIdBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.creditsBox = new System.Windows.Forms.TextBox();
             this.umidBox = new System.Windows.Forms.TextBox();
@@ -42,14 +41,8 @@
             this.studentListBox = new System.Windows.Forms.ListBox();
             this.studentFormLookupBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.majorDropdown = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // majorIdBox
-            // 
-            this.majorIdBox.Location = new System.Drawing.Point(78, 264);
-            this.majorIdBox.Name = "majorIdBox";
-            this.majorIdBox.Size = new System.Drawing.Size(146, 20);
-            this.majorIdBox.TabIndex = 54;
             // 
             // label5
             // 
@@ -64,21 +57,21 @@
             // 
             this.creditsBox.Location = new System.Drawing.Point(78, 241);
             this.creditsBox.Name = "creditsBox";
-            this.creditsBox.Size = new System.Drawing.Size(146, 20);
+            this.creditsBox.Size = new System.Drawing.Size(227, 20);
             this.creditsBox.TabIndex = 52;
             // 
             // umidBox
             // 
             this.umidBox.Location = new System.Drawing.Point(78, 218);
             this.umidBox.Name = "umidBox";
-            this.umidBox.Size = new System.Drawing.Size(146, 20);
+            this.umidBox.Size = new System.Drawing.Size(227, 20);
             this.umidBox.TabIndex = 51;
             // 
             // nameBox
             // 
             this.nameBox.Location = new System.Drawing.Point(78, 197);
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(146, 20);
+            this.nameBox.Size = new System.Drawing.Size(227, 20);
             this.nameBox.TabIndex = 50;
             // 
             // deleteButton
@@ -143,13 +136,14 @@
             this.studentListBox.FormattingEnabled = true;
             this.studentListBox.Location = new System.Drawing.Point(12, 38);
             this.studentListBox.Name = "studentListBox";
-            this.studentListBox.Size = new System.Drawing.Size(212, 134);
+            this.studentListBox.Size = new System.Drawing.Size(293, 134);
             this.studentListBox.TabIndex = 41;
+            this.studentListBox.SelectedIndexChanged += new System.EventHandler(this.studentBox_SelectedIndexChanged);
             // 
             // studentFormLookupBox
             // 
             this.studentFormLookupBox.Location = new System.Drawing.Point(89, 10);
-            this.studentFormLookupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.studentFormLookupBox.Margin = new System.Windows.Forms.Padding(2);
             this.studentFormLookupBox.Name = "studentFormLookupBox";
             this.studentFormLookupBox.Size = new System.Drawing.Size(76, 20);
             this.studentFormLookupBox.TabIndex = 55;
@@ -164,14 +158,23 @@
             this.label6.TabIndex = 56;
             this.label6.Text = "Filter By Major";
             // 
+            // majorDropdown
+            // 
+            this.majorDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.majorDropdown.FormattingEnabled = true;
+            this.majorDropdown.Location = new System.Drawing.Point(78, 264);
+            this.majorDropdown.Name = "majorDropdown";
+            this.majorDropdown.Size = new System.Drawing.Size(227, 21);
+            this.majorDropdown.TabIndex = 57;
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(230, 318);
+            this.ClientSize = new System.Drawing.Size(317, 318);
+            this.Controls.Add(this.majorDropdown);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.studentFormLookupBox);
-            this.Controls.Add(this.majorIdBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.creditsBox);
             this.Controls.Add(this.umidBox);
@@ -191,8 +194,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox majorIdBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox creditsBox;
         private System.Windows.Forms.TextBox umidBox;
@@ -206,5 +207,6 @@
         private System.Windows.Forms.ListBox studentListBox;
         private System.Windows.Forms.TextBox studentFormLookupBox;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox majorDropdown;
     }
 }

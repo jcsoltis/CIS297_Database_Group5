@@ -14,11 +14,13 @@ namespace WindowsFormsApp1
     {
         CollegeEntities collegeEntities;
         Section selectedSection;
+        List<Section> filteredList;
         public SectionForm()
         {
             collegeEntities = new CollegeEntities();
             selectedSection = new Section();
             InitializeComponent();
+            filteredList = new List<Section>();
             courseDropdown.DataSource = collegeEntities.Courses.ToList();
             instructorDropdown.DataSource = collegeEntities.Instructors.ToList();
             sectionListBox.DataSource = collegeEntities.Sections.ToList();
@@ -33,8 +35,10 @@ namespace WindowsFormsApp1
             selectedSection = sectionListBox.SelectedItem as Section;
             if (selectedSection != null)
             {
-                courseDropdown.SelectedIndex = selectedSection.Course_Id-1;
-                instructorDropdown.SelectedIndex = selectedSection.Instructor_Id-1;
+                if (courseDropdown.Items.Count > 0) 
+                    courseDropdown.SelectedIndex = selectedSection.Course_Id-1;
+                if (instructorDropdown.Items.Count > 0)
+                    instructorDropdown.SelectedIndex = selectedSection.Instructor_Id-1;
                 daysBox.Text = selectedSection.Days;
                 timeBox.Text = selectedSection.Time;
                 semesterTextBox.Text = selectedSection.Semester;
@@ -65,19 +69,21 @@ namespace WindowsFormsApp1
 
         private void addSection_Click(object sender, EventArgs e)
         {
-            if (EmptyBox() == 0)
-            {
+            if (EmptyBox() == 0) {
                 Section addSection = new Section {
                     Course_Id = (courseDropdown.SelectedItem as Course).Id,
                     Instructor_Id = (instructorDropdown.SelectedItem as Instructor).Id,
                     Days = daysBox.Text,
                     Time = timeBox.Text,
+                    Semester = semesterTextBox.Text
                 };
                 collegeEntities.Sections.Add(addSection);
                 collegeEntities.SaveChanges();
                 UpdateBoxes();
-            }
-            else
+                sectionListBox.DataSource = null;
+                sectionListBox.DataSource = (filteredList.Count == 0) ? collegeEntities.Sections.ToList() : filteredList;
+                sectionListBox.SelectedIndex = sectionListBox.Items.Count-1;
+            } else
             {
                 switch (EmptyBox())
                 {
@@ -100,6 +106,10 @@ namespace WindowsFormsApp1
                     updateSection.Time = timeBox.Text;
                     collegeEntities.SaveChanges();
                     UpdateBoxes();
+                    int currIndex = sectionListBox.SelectedIndex;
+                    sectionListBox.DataSource = null;
+                    sectionListBox.DataSource = (filteredList.Count == 0) ? collegeEntities.Sections.ToList() : filteredList;
+                    sectionListBox.SelectedIndex = currIndex;
                 }
             }
             else
@@ -128,13 +138,16 @@ namespace WindowsFormsApp1
             bool emptySemester = sectionFormLookupBox.Text == "";
             bool emptyFaculty = sectionFormLookupFacultyBox.Text == "";
             if (!emptySemester || !emptyFaculty) {
-                var newList = collegeEntities.Sections.
-                Where(c => c.Semester.ToUpper().StartsWith(sectionFormLookupBox.Text.ToUpper()) &&
-                c.Instructor.Name.Contains(sectionFormLookupFacultyBox.Text)).ToList();
-                sectionListBox.DataSource = newList;
-                if (newList.Count > 0)
-                    sectionListBox.SelectedItem = newList[0];
+                filteredList = collegeEntities.Sections.ToList();
+                if (!emptySemester)
+                    filteredList = filteredList.Where(c => c.Semester.ToUpper().Contains(sectionFormLookupBox.Text.ToUpper())).ToList();
+                if (!emptyFaculty)
+                    filteredList = filteredList.Where(c => c.Instructor.Name.ToUpper().Contains(sectionFormLookupFacultyBox.Text.ToUpper())).ToList();
+                sectionListBox.DataSource = filteredList;
+                if (filteredList.Count > 0)
+                    sectionListBox.SelectedItem = filteredList[0];
             } else {
+                filteredList.Clear();
                 sectionListBox.DataSource = collegeEntities.Sections.ToList();
                 if (collegeEntities.Sections.ToList().Count > 0)
                     sectionListBox.SelectedItem = collegeEntities.Sections.ToList()[0];
