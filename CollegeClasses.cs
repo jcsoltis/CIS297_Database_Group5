@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
     {
         public override string ToString()
         {
-            return $"{Id}. {Student.Name} -> {Section.Course.Name}:{Grade}";
+            return $"{Id}. {Student.Name}->[{Section.Semester}] {Section.Course.Name}: Grade:{Grade}";
         }
         
     }

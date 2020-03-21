@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gradeBox = new System.Windows.Forms.TextBox();
-            this.sectionIdBox = new System.Windows.Forms.TextBox();
-            this.studentIdBox = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
@@ -42,28 +39,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.enrollmentFormLookupSemesterBox = new System.Windows.Forms.TextBox();
+            this.gradeTextbox = new System.Windows.Forms.NumericUpDown();
+            this.sectionDropdown = new System.Windows.Forms.ComboBox();
+            this.studentDropdown = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.gradeTextbox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // gradeBox
-            // 
-            this.gradeBox.Location = new System.Drawing.Point(78, 241);
-            this.gradeBox.Name = "gradeBox";
-            this.gradeBox.Size = new System.Drawing.Size(223, 20);
-            this.gradeBox.TabIndex = 26;
-            // 
-            // sectionIdBox
-            // 
-            this.sectionIdBox.Location = new System.Drawing.Point(78, 218);
-            this.sectionIdBox.Name = "sectionIdBox";
-            this.sectionIdBox.Size = new System.Drawing.Size(223, 20);
-            this.sectionIdBox.TabIndex = 25;
-            // 
-            // studentIdBox
-            // 
-            this.studentIdBox.Location = new System.Drawing.Point(78, 197);
-            this.studentIdBox.Name = "studentIdBox";
-            this.studentIdBox.Size = new System.Drawing.Size(223, 20);
-            this.studentIdBox.TabIndex = 24;
             // 
             // deleteButton
             // 
@@ -98,7 +78,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 241);
+            this.label4.Location = new System.Drawing.Point(13, 241);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 18;
@@ -109,18 +89,18 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 218);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 17;
-            this.label3.Text = "Section Id";
+            this.label3.Text = "Section";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 197);
+            this.label2.Location = new System.Drawing.Point(12, 192);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 16;
-            this.label2.Text = "Student Id";
+            this.label2.Text = "Student";
             // 
             // enrollmentListBox
             // 
@@ -134,7 +114,7 @@
             // enrollmentFormLookupBox
             // 
             this.enrollmentFormLookupBox.Location = new System.Drawing.Point(95, 12);
-            this.enrollmentFormLookupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.enrollmentFormLookupBox.Margin = new System.Windows.Forms.Padding(2);
             this.enrollmentFormLookupBox.Name = "enrollmentFormLookupBox";
             this.enrollmentFormLookupBox.Size = new System.Drawing.Size(76, 20);
             this.enrollmentFormLookupBox.TabIndex = 27;
@@ -165,19 +145,45 @@
             this.enrollmentFormLookupSemesterBox.Name = "enrollmentFormLookupSemesterBox";
             this.enrollmentFormLookupSemesterBox.Size = new System.Drawing.Size(76, 20);
             this.enrollmentFormLookupSemesterBox.TabIndex = 29;
+            this.enrollmentFormLookupSemesterBox.TextChanged += new System.EventHandler(this.enrollmentFormLookupBox_TextChanged);
+            // 
+            // gradeTextbox
+            // 
+            this.gradeTextbox.Location = new System.Drawing.Point(78, 240);
+            this.gradeTextbox.Name = "gradeTextbox";
+            this.gradeTextbox.Size = new System.Drawing.Size(224, 20);
+            this.gradeTextbox.TabIndex = 31;
+            // 
+            // sectionDropdown
+            // 
+            this.sectionDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sectionDropdown.FormattingEnabled = true;
+            this.sectionDropdown.Location = new System.Drawing.Point(78, 215);
+            this.sectionDropdown.Name = "sectionDropdown";
+            this.sectionDropdown.Size = new System.Drawing.Size(223, 21);
+            this.sectionDropdown.TabIndex = 47;
+            // 
+            // studentDropdown
+            // 
+            this.studentDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.studentDropdown.FormattingEnabled = true;
+            this.studentDropdown.Location = new System.Drawing.Point(78, 189);
+            this.studentDropdown.Name = "studentDropdown";
+            this.studentDropdown.Size = new System.Drawing.Size(223, 21);
+            this.studentDropdown.TabIndex = 48;
             // 
             // EnrollmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(313, 296);
+            this.Controls.Add(this.studentDropdown);
+            this.Controls.Add(this.sectionDropdown);
+            this.Controls.Add(this.gradeTextbox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.enrollmentFormLookupSemesterBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.enrollmentFormLookupBox);
-            this.Controls.Add(this.gradeBox);
-            this.Controls.Add(this.sectionIdBox);
-            this.Controls.Add(this.studentIdBox);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.addButton);
@@ -187,15 +193,13 @@
             this.Controls.Add(this.enrollmentListBox);
             this.Name = "EnrollmentForm";
             this.Text = "EnrollmentForm";
+            ((System.ComponentModel.ISupportInitialize)(this.gradeTextbox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox gradeBox;
-        private System.Windows.Forms.TextBox sectionIdBox;
-        private System.Windows.Forms.TextBox studentIdBox;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button addButton;
@@ -207,5 +211,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox enrollmentFormLookupSemesterBox;
+        private System.Windows.Forms.NumericUpDown gradeTextbox;
+        private System.Windows.Forms.ComboBox sectionDropdown;
+        private System.Windows.Forms.ComboBox studentDropdown;
     }
 }

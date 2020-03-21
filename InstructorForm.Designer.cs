@@ -44,21 +44,21 @@
             // 
             this.officeBox.Location = new System.Drawing.Point(78, 241);
             this.officeBox.Name = "officeBox";
-            this.officeBox.Size = new System.Drawing.Size(146, 20);
+            this.officeBox.Size = new System.Drawing.Size(212, 20);
             this.officeBox.TabIndex = 38;
             // 
             // phoneBox
             // 
             this.phoneBox.Location = new System.Drawing.Point(78, 218);
             this.phoneBox.Name = "phoneBox";
-            this.phoneBox.Size = new System.Drawing.Size(146, 20);
+            this.phoneBox.Size = new System.Drawing.Size(212, 20);
             this.phoneBox.TabIndex = 37;
             // 
             // nameBox
             // 
             this.nameBox.Location = new System.Drawing.Point(78, 197);
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(146, 20);
+            this.nameBox.Size = new System.Drawing.Size(212, 20);
             this.nameBox.TabIndex = 36;
             // 
             // deleteButton
@@ -123,7 +123,7 @@
             this.instructorListBox.FormattingEnabled = true;
             this.instructorListBox.Location = new System.Drawing.Point(12, 38);
             this.instructorListBox.Name = "instructorListBox";
-            this.instructorListBox.Size = new System.Drawing.Size(212, 134);
+            this.instructorListBox.Size = new System.Drawing.Size(278, 134);
             this.instructorListBox.TabIndex = 27;
             this.instructorListBox.SelectedIndexChanged += new System.EventHandler(this.instructorBox_SelectedIndexChanged);
             // 
@@ -131,7 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(237, 296);
+            this.ClientSize = new System.Drawing.Size(302, 296);
             this.Controls.Add(this.officeBox);
             this.Controls.Add(this.phoneBox);
             this.Controls.Add(this.nameBox);

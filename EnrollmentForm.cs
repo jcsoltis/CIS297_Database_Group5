@@ -8,164 +8,97 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
-{
-    public partial class EnrollmentForm : Form
-    {
+namespace WindowsFormsApp1 {
+    public partial class EnrollmentForm : Form {
         CollegeEntities collegeEntities;
         Enrollment selectedEnrollment;
-        public EnrollmentForm()
-        {
+        List<Enrollment> filteredList;
+        public EnrollmentForm() {
             collegeEntities = new CollegeEntities();
             selectedEnrollment = new Enrollment();
             InitializeComponent();
+            filteredList = new List<Enrollment>();
+            enrollmentListBox.DataSource = collegeEntities.Enrollments.ToList();
+            studentDropdown.DataSource = collegeEntities.Students.ToList();
+            sectionDropdown.DataSource = collegeEntities.Sections.ToList();
+            if (collegeEntities.Enrollments.ToList().Count > 0)
+                enrollmentListBox.SelectedItem = collegeEntities.Enrollments.ToList()[0];
             UpdateBoxes();
         }
 
-        private void UpdateBoxes()
-        {
+        private void UpdateBoxes() {
             selectedEnrollment = enrollmentListBox.SelectedItem as Enrollment;
-            if (selectedEnrollment != null)
-            {
-                //idBox.Text = selectedEnrollment.Id.ToString();
-                studentIdBox.Text = selectedEnrollment.Student_Id.ToString();
-                sectionIdBox.Text = selectedEnrollment.Section_Id.ToString();
-                gradeBox.Text = selectedEnrollment.Grade.ToString();
-            }
-            enrollmentListBox.Items.Clear();
-            foreach (var enrollment in collegeEntities.Enrollments)
-            {
-                enrollmentListBox.Items.Add(enrollment);
+            if (selectedEnrollment != null) {
+                if (studentDropdown.Items.Count > 0)
+                    studentDropdown.SelectedIndex = selectedEnrollment.Student_Id - 1;
+                if (sectionDropdown.Items.Count > 0)
+                    sectionDropdown.SelectedIndex = selectedEnrollment.Section_Id - 1;
+                gradeTextbox.Value = (int)selectedEnrollment.Grade;
             }
         }
 
-        private int EmptyBox()
-        {
-            int emptyBox = 0;
-            if (studentIdBox.Text == "")
-            {
-                emptyBox = 2;
-            }
-            else if (sectionIdBox.Text == "")
-            {
-                emptyBox = 3;
-            }
-            else if (gradeBox.Text == "")
-            {
-                emptyBox = 4;
-            }
-            return emptyBox;
-        }
-
-        private int ValidKey()
-        {
-            int validKey = 0;
-            if (collegeEntities.Students.Find(Convert.ToInt32(studentIdBox.Text)) == null)
-            {
-                validKey = 1;
-            }
-            else if (collegeEntities.Sections.Find(Convert.ToInt32(sectionIdBox.Text)) == null)
-            {
-                validKey = 2;
-            }
-            return validKey;
-        }
-
-        private void enrollmentBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void enrollmentBox_SelectedIndexChanged(object sender, EventArgs e) {
             UpdateBoxes();
         }
 
-        private void addEnrollment_Click(object sender, EventArgs e)
-        {
-            if (EmptyBox() == 0)
-            {
-                Enrollment addEnrollment = new Enrollment {
-                    Student_Id = Convert.ToInt32(studentIdBox.Text),
-                    Section_Id = Convert.ToInt32(sectionIdBox.Text),
-                    Grade = Convert.ToDouble(gradeBox.Text),
-                };
-                collegeEntities.Enrollments.Add(addEnrollment);
+        private void addEnrollment_Click(object sender, EventArgs e) {
+            Enrollment addEnrollment = new Enrollment {
+                Student_Id = (studentDropdown.SelectedItem as Student).Id,
+                Section_Id = (sectionDropdown.SelectedItem as Section).Id,
+                Grade = Convert.ToDouble(gradeTextbox.Value)
+            };
+            collegeEntities.Enrollments.Add(addEnrollment);
+            collegeEntities.SaveChanges();
+            UpdateBoxes();
+            enrollmentListBox.DataSource = null;
+            enrollmentListBox.DataSource = (filteredList.Count == 0) ? collegeEntities.Enrollments.ToList() : filteredList;
+            enrollmentListBox.SelectedIndex = enrollmentListBox.Items.Count - 1;
+        }
+
+        private void updateEnrollment_Click(object sender, EventArgs e) {
+            Enrollment updateEnrollment = selectedEnrollment;
+            if (updateEnrollment != null) {
+                updateEnrollment.Student_Id = (studentDropdown.SelectedItem as Student).Id;
+                updateEnrollment.Section_Id = (sectionDropdown.SelectedItem as Section).Id;
+                updateEnrollment.Grade = (int)gradeTextbox.Value;
                 collegeEntities.SaveChanges();
                 UpdateBoxes();
+                int currIndex = enrollmentListBox.SelectedIndex;
+                enrollmentListBox.DataSource = null;
+                enrollmentListBox.DataSource = (filteredList.Count == 0) ? collegeEntities.Enrollments.ToList() : filteredList;
+                enrollmentListBox.SelectedIndex = currIndex;
             }
-            else
-            {
-                switch (EmptyBox())
-                {
-                    //case 1: idBox.Text = "Error! ID empty"; break;
-                    case 2: studentIdBox.Text = "Error! Student ID empty"; break;
-                    case 3: sectionIdBox.Text = "Error! Section ID empty"; break;
-                    case 4: gradeBox.Text = "Error! Grade empty"; break;
-                }
-            }
+
         }
 
-        private void updateEnrollment_Click(object sender, EventArgs e)
-        {
-            if (EmptyBox() == 0)
-            {
-                Enrollment updateEnrollment = selectedEnrollment;//enrollmentListBox.SelectedItem as Enrollment;//collegeEntities.Enrollments.Find(Convert.ToInt32(idBox.Text));
-                if (updateEnrollment != null) {
-                    updateEnrollment.Student_Id = Convert.ToInt32(studentIdBox.Text);
-                    updateEnrollment.Section_Id = Convert.ToInt32(sectionIdBox.Text);
-                    updateEnrollment.Grade = Convert.ToDouble(gradeBox.Text);
-                    collegeEntities.SaveChanges();
-                    UpdateBoxes();
-                }
-            } else
-            {
-                switch (EmptyBox())
-                {
-                    //case 1: idBox.Text = "Error! ID empty"; break;
-                    case 2: studentIdBox.Text = "Error! Student ID empty"; break;
-                    case 3: sectionIdBox.Text = "Error! Section ID empty"; break;
-                    case 4: gradeBox.Text = "Error! Grade empty"; break;
-                }
-            }
-        }
-
-        private void deleteEnrollment_Click(object sender, EventArgs e)
-        {
+        private void deleteEnrollment_Click(object sender, EventArgs e) {
             Enrollment deleteEnrollment = selectedEnrollment;
-            if (deleteEnrollment != null)
-            {
+            if (deleteEnrollment != null) {
                 collegeEntities.Enrollments.Remove(deleteEnrollment);
             }
             collegeEntities.SaveChanges();
             UpdateBoxes();
         }
 
-        private void enrollmentFormLookupBox_TextChanged(object sender, EventArgs e)
-        {
-            //updateSearch(enrollmentFormLookupBox.Text);
-        }
-      /*  public void updateSearch(string text)  //whole function needs to be worked on with group
-        {
-            enrollmentListBox.Items.Clear();
-            foreach (var enrollment in collegeEntities.Enrollments/*.Where(c => c.Sections.Count > 0))  //very useful clause for searching stuff with filters foreach (var course in collegeEntities.Courses.Where(c => c.Enrollment.Count < 30
-            {
-                if (text == "")//used to make sure no classes are showing up when no text is in the search bar 
-                {
-                    break;
-                }
-                if (text != "" &&
-                    !enrollment.Student.Name.StartsWith(text)) //start from here when you get back to filtering 
-                {
-                    continue;
-
-                }
-
-
-
-                enrollmentListBox.Items.Add(enrollment);
-                foreach (var field in student)                                                            
-                {
-                    enrollmentListBox.Items.Add($"{student.UMID}{student.Credits_Earned}{Environment.NewLine}");//figure out how to implement major in here
-                }
-            
-            
+        private void enrollmentFormLookupBox_TextChanged(object sender, EventArgs e) {
+            bool emptySemester = enrollmentFormLookupSemesterBox.Text == "";
+            bool emptyStudent = enrollmentFormLookupBox.Text == "";
+            if (!emptySemester || !emptyStudent) {
+                filteredList = collegeEntities.Enrollments.ToList();
+                if (!emptySemester)
+                    filteredList = filteredList.Where(c => c.Section.Semester.ToUpper().Contains(enrollmentFormLookupSemesterBox.Text.ToUpper())).ToList();
+                if (!emptyStudent)
+                    filteredList = filteredList.Where(c => c.Student.Name.ToUpper().Contains(enrollmentFormLookupBox.Text.ToUpper())).ToList();
+                enrollmentListBox.DataSource = filteredList;
+                if (filteredList.Count > 0)
+                    enrollmentListBox.SelectedItem = filteredList[0];
+            } else {
+                filteredList.Clear();
+                enrollmentListBox.DataSource = collegeEntities.Enrollments.ToList();
+                if (collegeEntities.Enrollments.ToList().Count > 0)
+                    enrollmentListBox.SelectedItem = collegeEntities.Enrollments.ToList()[0];
             }
-        }*/
+            UpdateBoxes();
+        }
     }
 }
