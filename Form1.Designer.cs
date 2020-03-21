@@ -43,57 +43,57 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(91, 30);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Course Form";
+            this.button2.Text = "Courses";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.CourseForm_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(41, 76);
+            this.button3.Location = new System.Drawing.Point(168, 120);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(91, 30);
             this.button3.TabIndex = 3;
-            this.button3.Text = "Enrollment Form";
+            this.button3.Text = "Enrollments";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.EnrollmentForm_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(41, 130);
+            this.button4.Location = new System.Drawing.Point(41, 71);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(91, 30);
             this.button4.TabIndex = 4;
-            this.button4.Text = "Instructor Form";
+            this.button4.Text = "Instructors";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.InstructorForm_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(41, 185);
+            this.button5.Location = new System.Drawing.Point(41, 120);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(91, 30);
             this.button5.TabIndex = 5;
-            this.button5.Text = "Major Form";
+            this.button5.Text = "Majors";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.MajorForm_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(41, 240);
+            this.button6.Location = new System.Drawing.Point(168, 71);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(91, 30);
             this.button6.TabIndex = 6;
-            this.button6.Text = "Section Form";
+            this.button6.Text = "Sections";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.SectionForm_Click);
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(41, 299);
+            this.button7.Location = new System.Drawing.Point(168, 23);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(91, 30);
             this.button7.TabIndex = 7;
-            this.button7.Text = "Student Form";
+            this.button7.Text = "Students";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.StudentForm_Click);
             // 
@@ -115,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(172, 347);
+            this.ClientSize = new System.Drawing.Size(302, 175);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -123,7 +123,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "College Database";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.collegeDataSet)).EndInit();
