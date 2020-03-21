@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.daysBox = new System.Windows.Forms.TextBox();
-            this.instructorIdBox = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
@@ -46,21 +45,15 @@
             this.courseDropdown = new System.Windows.Forms.ComboBox();
             this.semesterTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.instructorDropdown = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // daysBox
             // 
             this.daysBox.Location = new System.Drawing.Point(78, 241);
             this.daysBox.Name = "daysBox";
-            this.daysBox.Size = new System.Drawing.Size(219, 20);
+            this.daysBox.Size = new System.Drawing.Size(310, 20);
             this.daysBox.TabIndex = 38;
-            // 
-            // instructorIdBox
-            // 
-            this.instructorIdBox.Location = new System.Drawing.Point(78, 218);
-            this.instructorIdBox.Name = "instructorIdBox";
-            this.instructorIdBox.Size = new System.Drawing.Size(219, 20);
-            this.instructorIdBox.TabIndex = 37;
             // 
             // deleteButton
             // 
@@ -106,9 +99,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 218);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
+            this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 30;
-            this.label3.Text = "Instructor Id";
+            this.label3.Text = "Instructor";
             // 
             // label2
             // 
@@ -124,7 +117,7 @@
             this.sectionListBox.FormattingEnabled = true;
             this.sectionListBox.Location = new System.Drawing.Point(12, 38);
             this.sectionListBox.Name = "sectionListBox";
-            this.sectionListBox.Size = new System.Drawing.Size(285, 134);
+            this.sectionListBox.Size = new System.Drawing.Size(376, 134);
             this.sectionListBox.TabIndex = 27;
             this.sectionListBox.SelectedIndexChanged += new System.EventHandler(this.sectionBox_SelectedIndexChanged);
             // 
@@ -132,7 +125,7 @@
             // 
             this.timeBox.Location = new System.Drawing.Point(78, 264);
             this.timeBox.Name = "timeBox";
-            this.timeBox.Size = new System.Drawing.Size(219, 20);
+            this.timeBox.Size = new System.Drawing.Size(310, 20);
             this.timeBox.TabIndex = 40;
             // 
             // label5
@@ -158,17 +151,18 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(178, 13);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.Size = new System.Drawing.Size(56, 13);
             this.label6.TabIndex = 44;
-            this.label6.Text = "Faculty";
+            this.label6.Text = "By Faculty";
             // 
             // sectionFormLookupFacultyBox
             // 
-            this.sectionFormLookupFacultyBox.Location = new System.Drawing.Point(221, 10);
+            this.sectionFormLookupFacultyBox.Location = new System.Drawing.Point(235, 10);
             this.sectionFormLookupFacultyBox.Margin = new System.Windows.Forms.Padding(2);
             this.sectionFormLookupFacultyBox.Name = "sectionFormLookupFacultyBox";
             this.sectionFormLookupFacultyBox.Size = new System.Drawing.Size(76, 20);
             this.sectionFormLookupFacultyBox.TabIndex = 43;
+            this.sectionFormLookupFacultyBox.TextChanged += new System.EventHandler(this.sectionFormLookupBox_TextChanged);
             // 
             // label7
             // 
@@ -183,16 +177,16 @@
             // 
             this.courseDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.courseDropdown.FormattingEnabled = true;
-            this.courseDropdown.Location = new System.Drawing.Point(78, 193);
+            this.courseDropdown.Location = new System.Drawing.Point(78, 192);
             this.courseDropdown.Name = "courseDropdown";
-            this.courseDropdown.Size = new System.Drawing.Size(219, 21);
+            this.courseDropdown.Size = new System.Drawing.Size(310, 21);
             this.courseDropdown.TabIndex = 46;
             // 
             // semesterTextBox
             // 
             this.semesterTextBox.Location = new System.Drawing.Point(78, 289);
             this.semesterTextBox.Name = "semesterTextBox";
-            this.semesterTextBox.Size = new System.Drawing.Size(219, 20);
+            this.semesterTextBox.Size = new System.Drawing.Size(310, 20);
             this.semesterTextBox.TabIndex = 48;
             // 
             // label1
@@ -204,11 +198,21 @@
             this.label1.TabIndex = 47;
             this.label1.Text = "Semester";
             // 
+            // instructorDropdown
+            // 
+            this.instructorDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.instructorDropdown.FormattingEnabled = true;
+            this.instructorDropdown.Location = new System.Drawing.Point(78, 217);
+            this.instructorDropdown.Name = "instructorDropdown";
+            this.instructorDropdown.Size = new System.Drawing.Size(310, 21);
+            this.instructorDropdown.TabIndex = 49;
+            // 
             // SectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 341);
+            this.ClientSize = new System.Drawing.Size(400, 341);
+            this.Controls.Add(this.instructorDropdown);
             this.Controls.Add(this.semesterTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.courseDropdown);
@@ -219,7 +223,6 @@
             this.Controls.Add(this.timeBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.daysBox);
-            this.Controls.Add(this.instructorIdBox);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.addButton);
@@ -237,7 +240,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox daysBox;
-        private System.Windows.Forms.TextBox instructorIdBox;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button addButton;
@@ -254,5 +256,6 @@
         private System.Windows.Forms.ComboBox courseDropdown;
         private System.Windows.Forms.TextBox semesterTextBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox instructorDropdown;
     }
 }
