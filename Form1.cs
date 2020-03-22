@@ -30,8 +30,8 @@ namespace WindowsFormsApp1 {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-           
-           
+
+
             /*int instructorId = Convert.ToInt32(textBox1.Text);
            
             Instructor eric = new Instructor {
@@ -57,19 +57,22 @@ namespace WindowsFormsApp1 {
             {
                 listBox1.Items.Add(instructor.Id);
             }*/
-           
+
         }
 
-        private void CourseForm_Click(object sender, EventArgs e)
-        {
+        private void CourseForm_Click(object sender, EventArgs e) {
             courseForm = new CourseForm();
             courseForm.Show(); //these forms will only show once and then the program will crash for some reason
         }
 
-        private void EnrollmentForm_Click(object sender, EventArgs e)
-        {
-            enrollmentForm = new EnrollmentForm();
-            enrollmentForm.Show();
+        private void EnrollmentForm_Click(object sender, EventArgs e) {
+
+            if (collegeEntities.Students.ToList().Count > 0 && collegeEntities.Courses.ToList().Count > 0) {
+                enrollmentForm = new EnrollmentForm();
+                enrollmentForm.Show();
+            } else {
+                MessageBox.Show("Error! The Student and Course tables must both have at least\none entry before the Enrollment table can be modified.");
+            }
         }
 
         private void InstructorForm_Click(object sender, EventArgs e)
@@ -86,14 +89,22 @@ namespace WindowsFormsApp1 {
 
         private void SectionForm_Click(object sender, EventArgs e)
         {
-            sectionForm = new SectionForm();
-            sectionForm.Show();
+            if (collegeEntities.Instructors.ToList().Count > 0 && collegeEntities.Courses.ToList().Count > 0) {
+                sectionForm = new SectionForm();
+                sectionForm.Show();
+            } else {
+                MessageBox.Show("Error! The Instructor and Course tables must both have at least\none entry before the Section table can be modified.");
+            }
         }
 
         private void StudentForm_Click(object sender, EventArgs e)
         {
-            studentForm = new StudentForm();
-            studentForm.Show();
+            if (collegeEntities.Majors.ToList().Count > 0) {
+                studentForm = new StudentForm();
+                studentForm.Show();
+            } else {
+                MessageBox.Show("Error! The Major table must have at least one entry\nbefore the Student table can be modified.");
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
