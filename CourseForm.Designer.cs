@@ -42,6 +42,7 @@
             this.creditsBox = new System.Windows.Forms.TextBox();
             this.courseFormLookupBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // courseListBox
@@ -165,11 +166,21 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "Filter By Department:";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 23);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(111, 13);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "(Only if Sections Exist)";
+            // 
             // CourseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(249, 320);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.courseFormLookupBox);
             this.Controls.Add(this.creditsBox);
@@ -207,5 +218,6 @@
         private System.Windows.Forms.TextBox creditsBox;
         private System.Windows.Forms.TextBox courseFormLookupBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label6;
     }
 }
