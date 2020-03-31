@@ -150,6 +150,7 @@ namespace WindowsFormsApp1
             Course deleteCourse = selectedCourse;
             if (deleteCourse != null)
             {
+                collegeEntities.deleteSections(deleteCourse);
                 collegeEntities.Courses.Remove(deleteCourse);
             }
             collegeEntities.SaveChanges();

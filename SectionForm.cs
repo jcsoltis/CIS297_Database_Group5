@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
         CollegeEntities collegeEntities;
         Section selectedSection;
         List<Section> filteredList;
+        GradeDistributionForm gradeDistributionForm;
         public SectionForm()
         {
             collegeEntities = new CollegeEntities();
@@ -127,6 +128,7 @@ namespace WindowsFormsApp1
             Section deleteSection = selectedSection;
             if (deleteSection != null)
             {
+                collegeEntities.deleteEnrollments(deleteSection);
                 collegeEntities.Sections.Remove(deleteSection);
             }
             collegeEntities.SaveChanges();
@@ -153,6 +155,19 @@ namespace WindowsFormsApp1
                     sectionListBox.SelectedItem = collegeEntities.Sections.ToList()[0];
             }
             UpdateBoxes();
+        }
+
+        private void gradesButton_Click(object sender, EventArgs e)
+        {
+            if (selectedSection == null)
+            {
+                throw new System.InvalidOperationException("Select a section to see its grades' distribution");
+            }
+            else
+            {
+                gradeDistributionForm = new GradeDistributionForm(selectedSection);
+                gradeDistributionForm.Show();
+            }
         }
     }
 }

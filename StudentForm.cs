@@ -119,6 +119,7 @@ namespace WindowsFormsApp1
             Student deleteStudent = selectedStudent;
             if (deleteStudent != null)
             {
+                collegeEntities.deleteEnrollments(deleteStudent);
                 collegeEntities.Students.Remove(deleteStudent);
             }
             collegeEntities.SaveChanges();
