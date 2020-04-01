@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.labelForName = new System.Windows.Forms.Label();
-            this.gradesLabel = new System.Windows.Forms.Label();
+            this.gradesLettersLabel = new System.Windows.Forms.Label();
+            this.gradesPercentsLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelForName
@@ -42,21 +43,27 @@
             this.labelForName.Text = "label";
             this.labelForName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // gradesLabel
+            // gradesLettersLabel
             // 
-            this.gradesLabel.Location = new System.Drawing.Point(50, 82);
-            this.gradesLabel.Name = "gradesLabel";
-            this.gradesLabel.Size = new System.Drawing.Size(282, 281);
-            this.gradesLabel.TabIndex = 1;
-            this.gradesLabel.Text = "\r\n";
-            this.gradesLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.gradesLettersLabel.Location = new System.Drawing.Point(149, 82);
+            this.gradesLettersLabel.Name = "gradesLettersLabel";
+            this.gradesLettersLabel.Size = new System.Drawing.Size(39, 281);
+            this.gradesLettersLabel.TabIndex = 1;
+            // 
+            // gradesPercentsLabel
+            // 
+            this.gradesPercentsLabel.Location = new System.Drawing.Point(203, 82);
+            this.gradesPercentsLabel.Name = "gradesPercentsLabel";
+            this.gradesPercentsLabel.Size = new System.Drawing.Size(138, 281);
+            this.gradesPercentsLabel.TabIndex = 2;
             // 
             // GradeDistributionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 392);
-            this.Controls.Add(this.gradesLabel);
+            this.Controls.Add(this.gradesPercentsLabel);
+            this.Controls.Add(this.gradesLettersLabel);
             this.Controls.Add(this.labelForName);
             this.Name = "GradeDistributionForm";
             this.Text = "GradeDistributionForm";
@@ -66,6 +73,7 @@
 
         #endregion
         private System.Windows.Forms.Label labelForName;
-        private System.Windows.Forms.Label gradesLabel;
+        private System.Windows.Forms.Label gradesLettersLabel;
+        private System.Windows.Forms.Label gradesPercentsLabel;
     }
 }

@@ -31,17 +31,15 @@ namespace WindowsFormsApp1
             List<double> grade_percentages = getGradePercentages();
 
             if (grade_percentages == null)
-                gradesLabel.Text = "There are no enrollments in this section";
+                gradesLettersLabel.Text = "There are no enrollments in this section";
             else
             {
                 for (int i = 0; i < 13; i++)
                 {
                     if (grade_percentages[i] != 0)
                     {
-                        if (grade_letters[i].Length == 1)
-                            gradesLabel.Text += grade_letters[i] + "            " + Convert.ToInt32(grade_percentages[i]) + "%" + Environment.NewLine;
-                        else
-                            gradesLabel.Text += grade_letters[i] + "          " + Convert.ToInt32(grade_percentages[i]) + "%" + Environment.NewLine;
+                        gradesLettersLabel.Text += grade_letters[i] + Environment.NewLine;
+                        gradesPercentsLabel.Text += Convert.ToInt32(grade_percentages[i]) + "%" + Environment.NewLine;
                     }
                 }
             }
